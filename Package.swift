@@ -21,8 +21,5 @@ let package = Package(
         .target(
             name: "Mcrich23 Toolkit",
             dependencies: []),
-        .testTarget(
-            name: "Mcrich23 ToolkitTests",
-            dependencies: ["Mcrich23 Toolkit"]),
     ]
 )
