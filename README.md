@@ -1,3 +1,3 @@
 # Mcrich23 Toolkit
 
-A description of this package.
+This is a package that I made that has a bunch of qualities of life.
