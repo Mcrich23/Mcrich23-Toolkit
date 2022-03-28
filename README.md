@@ -2,9 +2,9 @@
 
 This is a package that I made that has a bunch of qualities of life.
 
-##**Usage**
+## **Usage**
 
-###**CapsuleMultiFilter**
+### **CapsuleMultiFilter**
 ```
 CapsuleMultiFilter(menuContent: .constant(AnyView(VStack { //Passes in the view for the plus button menu. Must use .constant() so that the view updates.
     if horizantalSizeClass == .regular {
