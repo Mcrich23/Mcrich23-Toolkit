@@ -11,7 +11,7 @@ import SwiftUI
 
 import SwiftUIX
 
-public struct capsuleMultiFilter: View {
+public struct CapsuleMultiFilter: View {
     @Binding var menuContent: AnyView
     @State var opt: [String]
     @Binding var selected: [String]
