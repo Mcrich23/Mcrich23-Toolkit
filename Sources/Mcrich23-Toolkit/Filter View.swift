@@ -12,12 +12,12 @@ import SwiftUI
 import SwiftUIX
 
 public struct capsuleMultiFilter: View {
-    @State var menuContent: AnyView
+    @Binding var menuContent: AnyView
     @State var opt: [String]
     @Binding var selected: [String]
     
-    public init(menuContent: AnyView, opt: [String], selected: Binding<[String]>) {
-        self.menuContent = menuContent
+    public init(menuContent: Binding<AnyView>, opt: [String], selected: Binding<[String]>) {
+        self._menuContent = menuContent
         self.opt = opt
         self._selected = selected
     }
