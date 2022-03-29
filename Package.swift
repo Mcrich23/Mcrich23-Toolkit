@@ -19,7 +19,6 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "SwiftUIX", url: "https://github.com/SwiftUIX/SwiftUIX", revision: "0.1.2"),
-        .package(name: "OmenTextField", url: "https://github.com/kitlangton/OmenTextField", revision: "0.0.6")
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
