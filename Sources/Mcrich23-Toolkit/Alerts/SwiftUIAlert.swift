@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SwiftUIAlert.swift
 //  
 //
 //  Created by Morris Richman on 3/28/22.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftUIX
 
-public struct swiftUIAlert {
+public struct SwiftUIAlert {
     public static func show(title: String, message: String, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
         let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
         for action in actions {

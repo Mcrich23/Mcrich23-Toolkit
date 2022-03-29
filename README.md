@@ -60,7 +60,7 @@ OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to
 ### **SwiftUIAlert**
 #### **show**
 ```
-swiftUIAlert.show(title: "Hello Word!", //Alert Title
+SwiftUIAlert.show(title: "Hello Word!", //Alert Title
                     message: "Lorem Ipsum", //Alert Message
                     preferredStyle: .alert, //Style (alert or action sheet)
                     actions: [UIAlertAction(title: "Done", //Action Title
@@ -71,7 +71,7 @@ swiftUIAlert.show(title: "Hello Word!", //Alert Title
 ```
 #### **textfieldShow**
 ```
-swiftUIAlert.textfieldShow(title: "Test", //Alert Title
+SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
                             message: "Hello World!", //Alert Message
                             preferredStyle: .alert, //Style (alert or action sheet)
                             textfield: AlertTextfield(text: $text, //Textfield Text
