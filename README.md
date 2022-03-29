@@ -45,3 +45,15 @@ CapsuleMultiFilter(menuContent: .constant(AnyView(VStack { //Passes in the view 
 selected: $filter //An array of currently selected filters
 )
 ```
+### **OnboardingScreen**
+```
+OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to the title
+                 titleIconColor: .yellow, //Color for the icon next to the title
+                    title: "Hello World", //Title
+                    subtitle: "Lorem Ipsum", //Subtitle (leave blank for it to dissapear)
+                    cells: .constant([FeatureCell(image: .systemImage(named: "hand"), //An icon next to the cell
+                                                  imageColor: .red, //Color for the icon next to the cell
+                                                title: "Title", //Title
+                                                subtitle: "Subtitle")]) //Subtitle/Description (leave blank for it to dissapear)
+)
+```
