@@ -23,6 +23,11 @@ The preferred way of installing SwiftUIX is via the [Swift Package Manager](http
 ## **Usage**
 
 ### **CapsuleMultiFilter**
+**Image:**
+
+<img width="277" alt="CapsuleMultiFilter Image" src="https://user-images.githubusercontent.com/81453549/160721810-0c5ca120-6440-443f-ad10-5e125b21c082.png">
+
+**Example:**
 ```
 CapsuleMultiFilter(menuContent: .constant(AnyView(VStack { //Passes in the view for the plus button menu. Must use .constant() so that the view updates.
     if horizantalSizeClass == .regular {
@@ -51,6 +56,11 @@ selected: $filter //An array of currently selected filters
 )
 ```
 ### **OnboardingScreen**
+**Image:**
+
+<img width="541" alt="OnboardingScreen Image" src="https://user-images.githubusercontent.com/81453549/160722025-afd6d319-39ad-4e21-9789-f701d08c7512.png">
+
+**Example:**
 ```
 OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to the title
                  titleIconColor: .yellow, //Color for the icon next to the title
@@ -63,6 +73,9 @@ OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to
 )
 ```
 ### **SwiftUIAlert**
+
+Default alerts
+
 #### **show**
 ```
 SwiftUIAlert.show(title: "Hello Word!", //Alert Title
