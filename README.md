@@ -2,18 +2,23 @@
 
 This is a package that I made that has a bunch of qualities of life.
 
-## Installation
-### **Swift Package Manager**
+# Requirements 
 
-The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but Mcrich23-Toolkit does support its use on supported platforms.
+- iOS 14, macOS 10.16, tvOS 14, or watchOS 67
+- Swift 5.5+
+- Xcode 13.0+
 
-Once you have your Swift package set up, adding Mcrich23-Toolkit as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+# Installation
 
-```
-dependencies: [
-    .package(url: "https://github.com/Mcrich23/Mcrich23-Toolkit.git", .upToNextMajor(from: "0.0.2"))
-]
-```
+The preferred way of installing SwiftUIX is via the [Swift Package Manager](https://swift.org/package-manager/).
+
+
+1. In Xcode, open your project and navigate to **File** → **Add Packages...**
+2. Paste the repository URL (`https://github.com/Mcrich23/Mcrich23-Toolkit`) and click **Next**.
+3. For **Rules**, select **Up To Next Major Version** (With base version set to 0.0.4).
+4. Click **Finish**.
+5. Check **Mcrich23-Toolkit**
+6. Click **Add To Project**
 
 ## **Usage**
 
