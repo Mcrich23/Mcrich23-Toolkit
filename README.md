@@ -93,4 +93,4 @@ Start Monitoring: `NetworkMonitor.shared.startMonitoring()`
 
 Stop Monitoring: `NetworkMonitor.shared.stopMonitoring()`
 
-Get Connection Type: `NetworkMonitor.shared.connectionType //Unknown can mean disconnected`
+Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean disconnected)
