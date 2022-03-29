@@ -20,13 +20,13 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
 **Versions (please complete the following information):**
  - Running OS: [e.g. iOS 15]
  - Xcode: [e.g. 13.2.1]
  - Development OS: [e.g. MacOS 12]
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
