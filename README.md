@@ -115,12 +115,12 @@ Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean di
 
 ### **CardView**
 
-Image:
+**Image:**
 
 <img height="277" alt="CardView" src="https://user-images.githubusercontent.com/81453549/160887712-a05ae6b2-4915-448f-bca8-a6aba111a2fe.png"><img height="277" alt="OpenCard" src="https://user-images.githubusercontent.com/81453549/160888175-f886d89a-cd37-4b79-8c06-30c4b273a8d3.png">
 
 
-Example:
+**Example:**
 ```
 ZStack {
     NavigationView {
@@ -141,6 +141,11 @@ ZStack {
 
 System ShareSheet for SwiftUI
 
+**Image:**
+
+<img height="277" alt="ShareSheet" src="https://user-images.githubusercontent.com/81453549/160920026-0230cadb-9a1f-4d44-8567-ba70454320c7.png">
+
+**Example:**
 ```
 Mcrich23_Toolkit.presentShareSheet(activityItems: [
     "Lorem Ipsum",
