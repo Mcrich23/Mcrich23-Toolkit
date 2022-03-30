@@ -36,7 +36,7 @@ public struct CardView: View {
                 if showHeader {
                     ScrollViewTitleView(create: {
                         create()
-                    }, headerSubtitleLocation: headerSubtitleLocation)
+                    }, headerTitle: headerTitle, headerSubtitile: headerSubtitile, headerSubtitleLocation: headerSubtitleLocation)
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         .blur(radius: control.anyTicketTriggered ? 20 : 0)
@@ -65,6 +65,8 @@ public struct CardView: View {
 
 struct ScrollViewTitleView: View {
     @State var create: () -> Void
+    @State var headerTitle: String
+    @State var headerSubtitile: String
     @State var headerSubtitleLocation: subtitleLocation
     
     var body: some View {
