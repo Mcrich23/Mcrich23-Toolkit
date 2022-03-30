@@ -18,7 +18,7 @@ let package = Package(
             targets: ["Mcrich23-Toolkit"]),
     ],
     dependencies: [
-        .package(name: "SwiftUIX", url: "https://github.com/SwiftUIX/SwiftUIX", revision: "0.1.2")
+        .package(url: "https://github.com/SwiftUIX/SwiftUIX", revision: "0.1.2")
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],

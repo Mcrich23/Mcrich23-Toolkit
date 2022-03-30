@@ -7,6 +7,9 @@
 
 import Foundation
 import SwiftUI
+
+#if os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst)// || os(macOS)
+
 import SwiftUIX
 
 public struct SwiftUIAlert {
@@ -57,3 +60,4 @@ public struct SwiftUIAlert {
         topVC.present(presentingAlert, animated: true, completion: nil)
     }
 }
+#endif
