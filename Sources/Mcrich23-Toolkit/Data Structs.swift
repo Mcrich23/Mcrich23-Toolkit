@@ -12,3 +12,6 @@ public enum glyphImage: Hashable, Equatable {
     case assetImage(named: String)
     case defaultIcon
 }
+public class Mcrich23_Toolkit {
+    
+}

@@ -74,7 +74,7 @@ OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to
 ```
 ### **SwiftUIAlert**
 
-Default alerts
+Default alerts for SwiftUI
 
 #### **show**
 ```
@@ -136,4 +136,14 @@ ZStack {
             .navigationBarTitle("Tickets") //Sets view title for back buttons
     }
 }
+```
+### **ShareSheet**
+
+System ShareSheet for SwiftUI
+
+```
+Mcrich23_Toolkit.presentShareSheet(activityItems: [
+    "Lorem Ipsum",
+    "Please Share This"
+])
 ```
