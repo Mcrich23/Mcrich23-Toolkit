@@ -20,14 +20,21 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(name: "SwiftUIX", url: "https://github.com/SwiftUIX/SwiftUIX", revision: "0.1.1")
+        .package(name: "SwiftUIX", url: "https://github.com/SwiftUIX/SwiftUIX", from: "0.1.1"),
+        .package(name: "SwiftUIKit", url: "https://github.com/youjinp/SwiftUIKit", branch: "master"),
+        .package(name: "URLImage", url: "https://github.com/dmytro-anokhin/url-image", from: "3.1.0"),
+        .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.3"),
+        .package(name: "LoaderUI", url: "https://github.com/Mcrich23/LoaderUI", branch: "master"),
+        .package(name: "WKView", url: "https://github.com/rebeloper/WKView", branch: "main"),
+        .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
+        .package(name: "SwiftUIMap", url: "https://github.com/Mcrich23/SwiftUIMap", from: "1.1.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX"]
+            dependencies: ["SwiftUIX", "SwiftUIKit", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap"]
             )
         ]
 )
