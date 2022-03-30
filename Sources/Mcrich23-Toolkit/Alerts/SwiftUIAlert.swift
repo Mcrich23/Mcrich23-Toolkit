@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst)// || os(macOS)
-
 import SwiftUIX
 
 public struct SwiftUIAlert {
