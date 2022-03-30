@@ -20,9 +20,10 @@ The preferred way of installing SwiftUIX is via the [Swift Package Manager](http
 5. Check **Mcrich23-Toolkit**
 6. Click **Add To Project**
 
-## **Usage**
+## **Functions**
 
 ### **CapsuleMultiFilter**
+
 **Image:**
 
 <img width="277" alt="CapsuleMultiFilter Image" src="https://user-images.githubusercontent.com/81453549/160721810-0c5ca120-6440-443f-ad10-5e125b21c082.png">
@@ -56,6 +57,11 @@ selected: $filter //An array of currently selected filters
 )
 ```
 ### **OnboardingScreen**
+
+**Description:**
+
+A screen for welcoming the user or presenting a What's New screen.
+
 **Image:**
 
 <img width="541" alt="OnboardingScreen Image" src="https://user-images.githubusercontent.com/81453549/160722025-afd6d319-39ad-4e21-9789-f701d08c7512.png">
@@ -74,7 +80,11 @@ OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to
 ```
 ### **SwiftUIAlert**
 
+**Description:**
+
 Default alerts for SwiftUI
+
+**Examples:**
 
 #### **show**
 ```
@@ -107,13 +117,23 @@ SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
 ```
 ### **NetworkMonitor**
 
-Start Monitoring: `NetworkMonitor.shared.startMonitoring()`
+**Description:**
+
+Watch connection to the internet and use information to modify app behavior.
+
+**Usage:**
+
+Start Monitoring: `NetworkMonitor.shared.startMonitoring()` (Call in AppDelagate)
 
 Stop Monitoring: `NetworkMonitor.shared.stopMonitoring()`
 
 Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean disconnected)
 
 ### **CardView**
+
+**Description:**
+
+Similar to the cards in the App Store.
 
 **Image:**
 
@@ -139,7 +159,9 @@ ZStack {
 ```
 ### **ShareSheet**
 
-System ShareSheet for SwiftUI
+**Description:**
+
+System ShareSheet for SwiftUI.
 
 **Image:**
 
