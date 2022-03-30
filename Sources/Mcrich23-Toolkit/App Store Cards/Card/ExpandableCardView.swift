@@ -20,7 +20,7 @@ struct ExpandableCardView: View {
     @State var isDetectingLongPress = false
     @State var isSelected = false
     
-    var ticket: Ticket
+    var card: Card
     
     //MARK: Card size
     let normalCardHeight: CGFloat = 350
@@ -74,12 +74,12 @@ struct ExpandableCardView: View {
             ZStack {
                 VStack {
                     TopView(isSelected: self.$isSelected,
-                            ticket: self.ticket)
+                            card: self.card)
                         .environmentObject(self.control)
                         .frame(height: self.normalCardHeight)
                     
                     if self.isSelected {
-                        ExpandableView(isSelected: self.$isSelected, ticket: self.ticket)
+                        ExpandableView(isSelected: self.$isSelected, card: self.card)
                         
                         Spacer()
                     }
@@ -128,13 +128,13 @@ struct TopView: View {
     @EnvironmentObject var control: TicketCardView_Control
     @Binding var isSelected: Bool
     
-    var ticket: Ticket
+    var card: Card
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ZStack {
-                    switch self.ticket.image {
+                    switch self.card.image {
                     case .systemImage(let string):
                         Image(systemName: string)
                             .resizable()
@@ -169,19 +169,19 @@ struct TopView: View {
                     //MARK: Upper part
                     HStack {
                         VStack(alignment: .leading) {
-                            if self.ticket.subtitleLocation == .above {
-                                Text(self.ticket.subtitle)
+                            if self.card.subtitleLocation == .above {
+                                Text(self.card.subtitle)
                                     .font(.caption)
                                     .foregroundColor(Color(.label))
                                     .lineLimit(1)
                             }
-                            Text(self.ticket.title)
+                            Text(self.card.title)
                                 .font(.headline)
                                 .foregroundColor(Color(.label))
                                 .lineLimit(2)
                             
-                            if self.ticket.subtitleLocation == .below {
-                                Text(self.ticket.subtitle)
+                            if self.card.subtitleLocation == .below {
+                                Text(self.card.subtitle)
                                     .font(.caption)
                                     .foregroundColor(Color(.label))
                                     .lineLimit(1)
@@ -213,7 +213,7 @@ struct TopView: View {
                     
                     //MARK: Bottom part
                     HStack(alignment: .center) {
-                        Text(self.ticket.briefSummary)
+                        Text(self.card.briefSummary)
                             .foregroundColor(Color(.label))
                             .font(.caption)
                             .lineLimit(3)
@@ -244,11 +244,11 @@ struct TopView: View {
 struct ExpandableView: View {
     @Binding var isSelected: Bool
     
-    var ticket: Ticket
+    var card: Card
     
     
     var body: some View {
-        Text(self.ticket.description)
+        Text(self.card.description)
             .font(.body)
             .foregroundColor(Color(.label))
             .padding()

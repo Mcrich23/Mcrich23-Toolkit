@@ -122,24 +122,18 @@ Image:
 
 Example:
 ```
-@ObservedObject var control = TicketCardView_Control()
-...
 ZStack {
     NavigationView {
-        CardView(showHeader: true, headerTitle: "Home", headerSubtitle: "Subtitle", headerSubtitleLocation.below, tickets: .constant(cardData), create: {
+        CardView(showHeader: true,  //Show the title, subtitle and create button
+        headerTitle: "Home", //Title on the header
+        headerSubtitle: "Subtitle", //Subtitle on the header
+        headerSubtitleLocation: .below, //If Subtitle is above or below the Title
+        cards: .constant(cardData), //All the cards in the view
+        create: { //Action when create (Plus Button) is tapped
             showCreateTicket.toggle()
         })
-            .navigationBarHidden(true)
-            .environmentObject(self.control)
-            .navigationBarTitle("Tickets")
-            .navigationBarItems(trailing:
-                NavigationLink(destination:
-                    TestView(showCreateTicket: $showCreateTicket),
-                                isActive: $showCreateTicket,
-                                label: { EmptyView() })
-            )
-        
+            .navigationBarHidden(true) //Removes Navigation Bar
+            .navigationBarTitle("Tickets") //Sets view title for back buttons
     }
-    .statusBar(hidden: self.control.anyTicketTriggered)
 }
 ```

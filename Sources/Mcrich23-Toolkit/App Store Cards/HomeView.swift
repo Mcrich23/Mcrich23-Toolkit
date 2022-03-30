@@ -7,25 +7,26 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 let screen = UIScreen.main.bounds
 
 public struct CardView: View {
-    @EnvironmentObject var control: TicketCardView_Control
+    @ObservedObject var control = TicketCardView_Control()
     @State var showHeader: Bool
     @State var headerTitle: String
     @State var headerSubtitile: String
     @State var headerSubtitleLocation: subtitleLocation
     @State var create: () -> Void
     //change cardData to real tickets
-    @Binding var tickets: [Ticket]
+    @Binding var cards: [Card]
     
-    public init(showHeader: Bool, headerTitle: String, headerSubtitle: String, headerSubtitleLocation: subtitleLocation, tickets: Binding<[Ticket]>, create: @escaping () -> Void) {
+    public init(showHeader: Bool, headerTitle: String, headerSubtitle: String, headerSubtitleLocation: subtitleLocation, cards: Binding<[Card]>, create: @escaping () -> Void) {
         self.showHeader = showHeader
         self.headerTitle = headerTitle
         self.headerSubtitile = headerSubtitle
         self.headerSubtitleLocation = headerSubtitleLocation
-        self._tickets = tickets
+        self._cards = cards
         self.create = create
     }
     
@@ -42,8 +43,8 @@ public struct CardView: View {
                         .blur(radius: control.anyTicketTriggered ? 20 : 0)
                 }
                 
-                ForEach(self.tickets) { ticket in
-                    ExpandableCardView(ticket: ticket)
+                ForEach(self.cards) { card in
+                    ExpandableCardView(card: card)
                             .environmentObject(self.control)
                             .padding(.horizontal, 20)
                             .padding(.bottom, 30)
@@ -58,7 +59,7 @@ public struct CardView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
-    
+        .statusBar(hidden: self.control.anyTicketTriggered)
     }
     
 }
@@ -111,7 +112,7 @@ struct ScrollViewTitleView: View {
 //MARK: Fake Data
 
 //Ticket to -> Card
-public struct Ticket : Identifiable {
+public struct Card : Identifiable {
     public var id = UUID()
     
     var title: String
