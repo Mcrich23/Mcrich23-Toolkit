@@ -112,3 +112,33 @@ Start Monitoring: `NetworkMonitor.shared.startMonitoring()`
 Stop Monitoring: `NetworkMonitor.shared.stopMonitoring()`
 
 Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean disconnected)
+
+### **CardView**
+
+Image:
+
+
+
+Example:
+```
+@ObservedObject var control = TicketCardView_Control()
+...
+ZStack {
+    NavigationView {
+        CardView(showHeader: true, headerTitle: "Home", headerSubtitle: "Subtitle", headerSubtitleLocation.below, tickets: .constant(cardData), create: {
+            showCreateTicket.toggle()
+        })
+            .navigationBarHidden(true)
+            .environmentObject(self.control)
+            .navigationBarTitle("Tickets")
+            .navigationBarItems(trailing:
+                NavigationLink(destination:
+                    TestView(showCreateTicket: $showCreateTicket),
+                                isActive: $showCreateTicket,
+                                label: { EmptyView() })
+            )
+        
+    }
+    .statusBar(hidden: self.control.anyTicketTriggered)
+}
+```
