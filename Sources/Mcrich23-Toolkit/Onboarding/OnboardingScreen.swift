@@ -10,7 +10,7 @@ import SwiftUI
 public struct OnboardingScreen: View {
     @Environment(\.presentationMode) var presentationMode
     var titleIcon: glyphImage = .defaultIcon
-    var titleIconColor: Color = .label
+    var titleIconColor: Color = .gray
     var title: String = ""
     var subtitle: String = ""
     @Binding var cells: [FeatureCell]
