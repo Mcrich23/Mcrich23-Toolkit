@@ -45,6 +45,16 @@ public struct SwiftUIAlert {
                 tf.returnKeyType = textfield.returnKeyType
                 tf.keyboardType = textfield.keyboardType
         }
+        func setText() {
+            if let textField = presentingAlert.textFields?.first, let text = textField.text {
+//                print("Code = \(text)")
+                textfield.text = text
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                setText()
+            }
+        }
+        setText()
         for action in actions {
             presentingAlert.addAction(action)
         }
