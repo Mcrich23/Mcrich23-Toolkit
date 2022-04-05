@@ -24,8 +24,8 @@ public struct AlertTextfield: View {
     @State var returnKeyType: UIReturnKeyType
     @State var isSecureTextEntry: Bool
     @State var dismissKeyboardOnReturn: Bool
-    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, disableAutocorrection: Bool, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType, isSecureTextEntry: Bool, dismissKeyboardOnReturn: Bool) { //font: Font, fontWeight: Font.Weight) {
-        self._text = presetText
+    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, disableAutocorrection: Bool, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType, isSecureTextEntry: Bool, dismissKeyboardOnReturn: Bool) {
+        self._text = text
         self.placeholder = placeholder
         self.clearButtonMode = clearButtonMode
         self.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
