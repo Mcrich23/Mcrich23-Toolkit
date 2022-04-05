@@ -69,7 +69,7 @@ public struct OnboardingScreen: View {
             Button(action: { presentationMode.wrappedValue.dismiss() }) {
                 HStack {
                     Spacer()
-                    Text("Continue")
+                    Text(NSLocalizedString("Continue", comment: ""))
                         .font(.headline)
                         .foregroundColor(.white)
                     Spacer()

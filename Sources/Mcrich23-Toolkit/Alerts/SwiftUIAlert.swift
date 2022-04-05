@@ -30,7 +30,7 @@ public struct SwiftUIAlert {
     public static func textfieldShow(title: String, message: String, preferredStyle: UIAlertController.Style, textfield: AlertTextfield, actions: [UIAlertAction]) {
         let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
             presentingAlert.addTextField { tf in
-                tf.placeholder = textfield.placeholder
+                tf.placeholder = NSLocalizedString(textfield.placeholder, comment: "")
                 tf.text = textfield.text
                 tf.clearButtonMode = textfield.clearButtonMode
 //                tf.clearsOnBeginEditing = textfield.clearsOnBeginEditing
