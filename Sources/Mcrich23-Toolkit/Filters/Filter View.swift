@@ -12,12 +12,12 @@ import SwiftUIX
 
 public struct CapsuleMultiFilter: View {
     @Binding var menuContent: AnyView
-    @State var opt: [String]
+    @Binding var opt: [String]
     @Binding var selected: [String]
     
-    public init(menuContent: Binding<AnyView>, opt: [String], selected: Binding<[String]>) {
+    public init(menuContent: Binding<AnyView>, opt: Binding<[String]>, selected: Binding<[String]>) {
         self._menuContent = menuContent
-        self.opt = opt
+        self._opt = opt
         self._selected = selected
     }
     
@@ -31,7 +31,7 @@ public struct CapsuleMultiFilter: View {
                     }
                 }
                 if selected.sorted() != opt.sorted() {
-                    Menu (content: {
+                    Menu(content: {
                         menuContent
                     }, label: {
                         Image(systemName: "plus.circle")
@@ -40,6 +40,9 @@ public struct CapsuleMultiFilter: View {
             }
         }
         .frame(height: 20, alignment: .trailing)
+        .onAppear {
+            print("opt = \(opt)")
+        }
     }
 }
 
@@ -56,6 +59,7 @@ struct stringFilterView: View {
             }
             .foregroundColor(.white)
             .padding(.trailing)
+            .hoverEffect(.highlight)
         }
         .background {
             Capsule(style: .circular)
