@@ -4,7 +4,7 @@ This is a package that I made that has a bunch of qualities of life.
 
 # Requirements 
 
-- iOS 14, macOS 10.16, tvOS 14, or watchOS 67
+- iOS 14, macOS 10.16, tvOS 14, or watchOS 6.7
 - Swift 5.5+
 - Xcode 12.5+
 
