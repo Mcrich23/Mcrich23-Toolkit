@@ -37,7 +37,7 @@ public struct SwiftUIAlert {
                 tf.enablesReturnKeyAutomatically = textfield.enablesReturnKeyAutomatically
                 if textfield.disableAutocorrection {
                     tf.autocorrectionType = .no
-                }else {
+                } else {
                     tf.autocorrectionType = .yes
                 }
                 tf.autocapitalizationType = textfield.autocapitalization

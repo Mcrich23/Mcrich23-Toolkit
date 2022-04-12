@@ -41,7 +41,7 @@ CapsuleMultiFilter(menuContent: .constant(AnyView(VStack { //Passes in the view 
                 }
             }
         }
-    }else {
+    } else {
         ForEach(filterOpt, id: \.self) { text in
             if !filter.contains(text) {
                 Button {
@@ -173,4 +173,26 @@ Mcrich23_Toolkit.presentShareSheet(activityItems: [
     "Lorem Ipsum",
     "Please Share This"
 ])
+```
+### **.onRotate**
+
+#### **Description:**
+
+Update a variable and your view on rotate.
+
+#### **Example:**
+
+```
+@State var orientation = UIDevice.current.orientation
+...
+var body: some view {
+    VStack {
+        if orientation == .portrait {
+            Text("Hello World")
+        }
+    }
+    .onRotate { newOrientation in
+        orientation = newOrientation
+    }
+}
 ```

@@ -34,7 +34,7 @@ extension Mcrich23_Toolkit {
         }
         if UIDevice.current.userInterfaceIdiom == .phone {
             topVC.present(activityController, animated: true)
-        }else {
+        } else {
             topVC.present {
                 ShareSheet(sharing: activityItems)
             }
