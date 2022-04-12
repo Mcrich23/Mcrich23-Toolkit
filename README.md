@@ -10,7 +10,7 @@ This is a package that I made that has a bunch of qualities of life.
 
 # Installation
 
-The preferred way of installing SwiftUIX is via the [Swift Package Manager](https://swift.org/package-manager/).
+The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manager](https://swift.org/package-manager/).
 
 
 1. In Xcode, open your project and navigate to **File** → **Add Packages...**
