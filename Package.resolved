@@ -2,11 +2,38 @@
   "object": {
     "pins": [
       {
+        "package": "MultiModal",
+        "repositoryURL": "https://github.com/davdroman/MultiModal",
+        "state": {
+          "branch": null,
+          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
+          "version": "2.1.0"
+        }
+      },
+      {
+        "package": "SwiftUIMap",
+        "repositoryURL": "https://github.com/Mcrich23/SwiftUIMap",
+        "state": {
+          "branch": null,
+          "revision": "43f935d67886aaa6e7c76c314928193a700d2aff",
+          "version": "1.1.0"
+        }
+      },
+      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
         "state": {
-          "branch": "0.1.1",
-          "revision": "eb6a23fc4cc79545e40a8cf5c82119684750194f",
+          "branch": null,
+          "revision": "889c781539cdd1e6a1111472c711082522aa35c6",
+          "version": "0.1.2"
+        }
+      },
+      {
+        "package": "WKView",
+        "repositoryURL": "https://github.com/rebeloper/WKView",
+        "state": {
+          "branch": "main",
+          "revision": "16e1390b4ed59a82609462d85cd0670d5144f036",
           "version": null
         }
       }
