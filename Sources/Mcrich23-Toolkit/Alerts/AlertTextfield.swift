@@ -11,79 +11,70 @@ import SwiftUI
 #if os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst)// || os(macOS)
 import SwiftUIX
 
-public struct AlertTextfield: View {
+public enum IsSecureTextFieldOptions {
+    case yes(passwordRules: UITextInputPasswordRules)
+    case no
+}
+
+public struct AlertTextfield {
     @Binding var text: String
     @State var keyboardAppearance: UIKeyboardAppearance
     @State var placeholder: String
     @State var clearButtonMode: UITextField.ViewMode
     @State var enablesReturnKeyAutomatically: Bool
-    @State var disableAutocorrection: Bool
+    @State var autocorrectionType: UITextAutocorrectionType
     @State var autocapitalization: UITextAutocapitalizationType
     @State var keyboardType: UIKeyboardType
     @State var returnKeyType: UIReturnKeyType
-    @State var isSecureTextEntry: Bool
+    @State var isSecureTextEntry: IsSecureTextFieldOptions
     @State var dismissKeyboardOnReturn: Bool
-    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, disableAutocorrection: Bool, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, returnKeyType: UIReturnKeyType, isSecureTextEntry: Bool, dismissKeyboardOnReturn: Bool) {
+    
+    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, autocorrectionType: UITextAutocorrectionType, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, returnKeyType: UIReturnKeyType, isSecureTextEntry: IsSecureTextFieldOptions, dismissKeyboardOnReturn: Bool) {
         self._text = text
         self.placeholder = placeholder
         self.keyboardAppearance = keyboardAppearance
         self.clearButtonMode = clearButtonMode
         self.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
-        self.disableAutocorrection = disableAutocorrection
+        self.autocorrectionType = autocorrectionType
         self.autocapitalization = autocapitalization
         self.keyboardType = keyboardType
         self.returnKeyType = returnKeyType
         self.isSecureTextEntry = isSecureTextEntry
         self.dismissKeyboardOnReturn = dismissKeyboardOnReturn
     }
-    
-    public var body: some View {
-        CocoaTextField("title", text: $text)
-            .dismissKeyboardOnReturn(dismissKeyboardOnReturn)
-            .secureTextEntry(isSecureTextEntry)
-            .returnKeyType(returnKeyType)
-            .clearButtonMode(clearButtonMode)
-            .enablesReturnKeyAutomatically(enablesReturnKeyAutomatically)
-            .disableAutocorrection(disableAutocorrection)
-            .autocapitalization(autocapitalization)
-//            .font(font, weight: fontWeight)
-            .keyboardType(keyboardType)
-    }
-}
 // MARK: Additional Initializers
-extension AlertTextfield {
     public init(text: Binding<String>, placeholder: String) {
         self._text = text
         self.placeholder = placeholder
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
+        self.autocorrectionType = .default
         self.autocapitalization = .sentences
         self.keyboardType = .default
         self.keyboardAppearance = .default
         self.returnKeyType = .default
-        self.isSecureTextEntry = false
+        self.isSecureTextEntry = .no
         self.dismissKeyboardOnReturn = true
     }
-    public init(text: Binding<String>, placeholder: String, autocapitalization: UITextAutocapitalizationType, disableAutocorrection: Bool) {
+    public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, autocapitalization: UITextAutocapitalizationType, autocorrectionType: UITextAutocorrectionType) {
         self._text = text
         self.placeholder = placeholder
-        self.disableAutocorrection = disableAutocorrection
+        self.autocorrectionType = autocorrectionType
         self.autocapitalization = autocapitalization
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
         self.keyboardType = .default
-        self.keyboardAppearance = .default
+        self.keyboardAppearance = keyboardAppearance
         self.returnKeyType = .default
-        self.isSecureTextEntry = false
+        self.isSecureTextEntry = .no
         self.dismissKeyboardOnReturn = true
     }
-    public init(text: Binding<String>, placeholder: String, isSecureTextEntry: Bool) {
+    public init(text: Binding<String>, placeholder: String, isSecureTextEntry: IsSecureTextFieldOptions) {
         self._text = text
         self.placeholder = placeholder
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
+        self.autocorrectionType = .default
         self.autocapitalization = .sentences
         self.keyboardType = .default
         self.keyboardAppearance = .default
@@ -96,10 +87,10 @@ extension AlertTextfield {
         self.placeholder = placeholder
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
+        self.autocorrectionType = .default
         self.autocapitalization = .sentences
         self.returnKeyType = .default
-        self.isSecureTextEntry = false
+        self.isSecureTextEntry = .no
         self.dismissKeyboardOnReturn = true
         self.keyboardType = keyboardType
         self.keyboardAppearance = .default
@@ -112,9 +103,9 @@ extension AlertTextfield {
         self.returnKeyType = returnKeyType
         self.clearButtonMode = clearButtonMode
         self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
+        self.autocorrectionType = .default
         self.autocapitalization = .sentences
-        self.isSecureTextEntry = false
+        self.isSecureTextEntry = .no
         self.dismissKeyboardOnReturn = true
     }
 }

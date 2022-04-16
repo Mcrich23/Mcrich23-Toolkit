@@ -30,21 +30,23 @@ public struct SwiftUIAlert {
     public static func textfieldShow(title: String, message: String, preferredStyle: UIAlertController.Style, textfield: AlertTextfield, actions: [UIAlertAction]) {
         let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
             presentingAlert.addTextField { tf in
+                tf.autocorrectionType = textfield.autocorrectionType
                 tf.placeholder = NSLocalizedString(textfield.placeholder, comment: "")
                 tf.text = textfield.text
                 tf.clearButtonMode = textfield.clearButtonMode
 //                tf.clearsOnBeginEditing = textfield.clearsOnBeginEditing
                 tf.enablesReturnKeyAutomatically = textfield.enablesReturnKeyAutomatically
-                if textfield.disableAutocorrection {
-                    tf.autocorrectionType = .no
-                } else {
-                    tf.autocorrectionType = .yes
-                }
                 tf.autocapitalizationType = textfield.autocapitalization
-//                tf.font = textfield.font
                 tf.returnKeyType = textfield.returnKeyType
                 tf.keyboardType = textfield.keyboardType
                 tf.keyboardAppearance = textfield.keyboardAppearance
+                switch textfield.isSecureTextEntry {
+                case .yes(let passwordRules):
+                    tf.isSecureTextEntry = true
+                    tf.passwordRules = passwordRules
+                case .no:
+                    tf .isSecureTextEntry = false
+                }
         }
         func setText() {
             if let textField = presentingAlert.textFields?.first, let text = textField.text {
