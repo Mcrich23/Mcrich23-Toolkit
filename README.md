@@ -196,3 +196,16 @@ var body: some view {
     }
 }
 ```
+### **getTopVC**
+
+#### **Description:**
+
+Get the top view controller to do a uikit function on the current view instead of the root view
+
+#### **Example:**
+
+```
+Mcrich23_Toolkit.getTopVC { topVC in
+    //Run Action Here
+}
+```

@@ -17,15 +17,9 @@ public struct SwiftUIAlert {
         for action in actions {
             presentingAlert.addAction(action)
         }
-        guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
-            return
+        Mcrich23_Toolkit.getTopVC { topVC in
+            topVC.present(presentingAlert, animated: true, completion: nil)
         }
-        // iterate til we find the topmost presented view controller
-        // if you don't you'll get an error since you can't present 2 vcs from the same level
-        while let presentedVC = topVC.presentedViewController {
-            topVC = presentedVC
-        }
-        topVC.present(presentingAlert, animated: true, completion: nil)
     }
     public static func textfieldShow(title: String, message: String, preferredStyle: UIAlertController.Style, textfield: AlertTextfield, actions: [UIAlertAction]) {
         let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
@@ -61,15 +55,9 @@ public struct SwiftUIAlert {
         for action in actions {
             presentingAlert.addAction(action)
         }
-        guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
-            return
+        Mcrich23_Toolkit.getTopVC { topVC in
+            topVC.present(presentingAlert, animated: true, completion: nil)
         }
-        // iterate til we find the topmost presented view controller
-        // if you don't you'll get an error since you can't present 2 vcs from the same level
-        while let presentedVC = topVC.presentedViewController {
-            topVC = presentedVC
-        }
-        topVC.present(presentingAlert, animated: true, completion: nil)
     }
 }
 #endif
