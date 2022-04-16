@@ -39,7 +39,7 @@ public struct AlertTextfield: View {
     
     public var body: some View {
         CocoaTextField("title", text: $text, onCommit: {
-            self.onCommit
+            self.onCommit()
         })
             .dismissKeyboardOnReturn(dismissKeyboardOnReturn)
             .secureTextEntry(isSecureTextEntry)
