@@ -110,7 +110,7 @@ SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
                                                         autocapitalization: .sentences, //Autocapitalization (nonsentances, allCharacter, or words)
                                                         keyboardType: .default, //The type of keyboard
                                                         returnKeyType: .default, //Type of return key on keyboard
-                                                        isSecureTextEntry: false, //Is Secure Textfield?
+                                                        isSecureTextEntry: .no, //Is Secure Textfield? (.yes(UITextInputPassordRules) or .no)
                                                         dismissKeyboardOnReturn: true), //Dismiss keyboard on return?
                             actions: [UIAlertAction(title: "Done", style: .default)]
 )
