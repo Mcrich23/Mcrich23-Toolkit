@@ -50,53 +50,69 @@ public struct AlertTextfield: View {
 }
 // MARK: Additional Initializers
 extension AlertTextfield {
+    enum DefaultTypes: CaseIterable {
+        case clearButtonMode
+        case enablesReturnKeyAutomatically
+        case disableAutocorrection
+        case autocapitalization
+        case keyboardType
+        case returnKeyType
+        case isSecureTextEntry
+        case dismissKeyboardOnReturn
+    }
+    func setDefaults(defaultsArray: [DefaultTypes]) {
+        for defaultArray in defaultsArray {
+            switch defaultArray {
+            case .clearButtonMode:
+                self.clearButtonMode = .whileEditing
+            case .enablesReturnKeyAutomatically:
+                self.enablesReturnKeyAutomatically = true
+            case .disableAutocorrection:
+                self.disableAutocorrection = false
+            case .autocapitalization:
+                self.autocapitalization = .sentences
+            case .keyboardType:
+                self.keyboardType = .default
+            case .returnKeyType:
+                self.returnKeyType = .default
+            case .isSecureTextEntry:
+                self.isSecureTextEntry = false
+            case .dismissKeyboardOnReturn:
+                self.dismissKeyboardOnReturn = true
+            }
+        }
+    }
     public init(text: Binding<String>, placeholder: String) {
         self._text = text
         self.placeholder = placeholder
-        self.clearButtonMode = .whileEditing
-        self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
-        self.autocapitalization = .sentences
-        self.keyboardType = .default
-        self.returnKeyType = .default
-        self.isSecureTextEntry = false
-        self.dismissKeyboardOnReturn = true
+        setDefaults(defaultsArray: [.clearButtonMode, .enablesReturnKeyAutomatically, .disableAutocorrection, .autocapitalization, .keyboardType, .returnKeyType, .isSecureTextEntry, .dismissKeyboardOnReturn])
     }
     public init(text: Binding<String>, placeholder: String, autocapitalization: UITextAutocapitalizationType, disableAutocorrection: Bool) {
         self._text = text
         self.placeholder = placeholder
-        self.clearButtonMode = .whileEditing
-        self.enablesReturnKeyAutomatically = true
         self.disableAutocorrection = disableAutocorrection
         self.autocapitalization = autocapitalization
-        self.keyboardType = .default
-        self.returnKeyType = .default
-        self.isSecureTextEntry = false
-        self.dismissKeyboardOnReturn = true
+        setDefaults(defaultsArray: [.clearButtonMode, .enablesReturnKeyAutomatically, .keyboardType, .returnKeyType, .isSecureTextEntry, .dismissKeyboardOnReturn])
     }
     public init(text: Binding<String>, placeholder: String, isSecureTextEntry: Bool) {
         self._text = text
         self.placeholder = placeholder
-        self.clearButtonMode = .whileEditing
-        self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
-        self.autocapitalization = .sentences
-        self.keyboardType = .default
-        self.returnKeyType = .default
+        setDefaults(defaultsArray: [.clearButtonMode, .enablesReturnKeyAutomatically, .disableAutocorrection, .autocapitalization, .keyboardType, .returnKeyType, .dismissKeyboardOnReturn])
         self.isSecureTextEntry = isSecureTextEntry
-        self.dismissKeyboardOnReturn = true
     }
     public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType) {
         self._text = text
         self.placeholder = placeholder
-        self.clearButtonMode = .whileEditing
-        self.enablesReturnKeyAutomatically = true
-        self.disableAutocorrection = false
-        self.autocapitalization = .sentences
+        setDefaults(defaultsArray: [.clearButtonMode, .enablesReturnKeyAutomatically, .disableAutocorrection, .autocapitalization, .returnKeyType, .isSecureTextEntry, .dismissKeyboardOnReturn])
         self.keyboardType = keyboardType
-        self.returnKeyType = .default
-        self.isSecureTextEntry = false
-        self.dismissKeyboardOnReturn = true
+    }
+    public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType, clearButtonMode: UITextField.ViewMode) {
+        self._text = text
+        self.placeholder = placeholder
+        self.keyboardType = keyboardType
+        self.returnKeyType = returnKeyType
+        self.clearButtonMode = clearButtonMode
+        setDefaults(defaultsArray: [.enablesReturnKeyAutomatically, .disableAutocorrection, .autocapitalization, .isSecureTextEntry, .dismissKeyboardOnReturn])
     }
 }
 #endif
