@@ -13,7 +13,7 @@ import SwiftUIX
 
 public struct AlertTextfield: View {
     @Binding var text: String
-    @State var onCommit: () -> Void
+    @State var keyboardAppearance: UIKeyboardAppearance
     @State var placeholder: String
     @State var clearButtonMode: UITextField.ViewMode
     @State var enablesReturnKeyAutomatically: Bool
@@ -23,10 +23,10 @@ public struct AlertTextfield: View {
     @State var returnKeyType: UIReturnKeyType
     @State var isSecureTextEntry: Bool
     @State var dismissKeyboardOnReturn: Bool
-    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, disableAutocorrection: Bool, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType, isSecureTextEntry: Bool, dismissKeyboardOnReturn: Bool, onCommit: @escaping () -> Void) {
+    public init(text: Binding<String>, placeholder: String, clearButtonMode: UITextField.ViewMode, enablesReturnKeyAutomatically: Bool, disableAutocorrection: Bool, autocapitalization: UITextAutocapitalizationType, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, returnKeyType: UIReturnKeyType, isSecureTextEntry: Bool, dismissKeyboardOnReturn: Bool) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = onCommit
+        self.keyboardAppearance = keyboardAppearance
         self.clearButtonMode = clearButtonMode
         self.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
         self.disableAutocorrection = disableAutocorrection
@@ -38,9 +38,7 @@ public struct AlertTextfield: View {
     }
     
     public var body: some View {
-        CocoaTextField("title", text: $text, onCommit: {
-            self.onCommit()
-        })
+        CocoaTextField("title", text: $text)
             .dismissKeyboardOnReturn(dismissKeyboardOnReturn)
             .secureTextEntry(isSecureTextEntry)
             .returnKeyType(returnKeyType)
@@ -57,25 +55,25 @@ extension AlertTextfield {
     public init(text: Binding<String>, placeholder: String) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = {}
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
         self.disableAutocorrection = false
         self.autocapitalization = .sentences
         self.keyboardType = .default
+        self.keyboardAppearance = .default
         self.returnKeyType = .default
         self.isSecureTextEntry = false
         self.dismissKeyboardOnReturn = true
     }
-    public init(text: Binding<String>, placeholder: String, autocapitalization: UITextAutocapitalizationType, disableAutocorrection: Bool, onCommit: @escaping () -> Void) {
+    public init(text: Binding<String>, placeholder: String, autocapitalization: UITextAutocapitalizationType, disableAutocorrection: Bool) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = onCommit
         self.disableAutocorrection = disableAutocorrection
         self.autocapitalization = autocapitalization
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
         self.keyboardType = .default
+        self.keyboardAppearance = .default
         self.returnKeyType = .default
         self.isSecureTextEntry = false
         self.dismissKeyboardOnReturn = true
@@ -83,12 +81,12 @@ extension AlertTextfield {
     public init(text: Binding<String>, placeholder: String, isSecureTextEntry: Bool) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = {}
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
         self.disableAutocorrection = false
         self.autocapitalization = .sentences
         self.keyboardType = .default
+        self.keyboardAppearance = .default
         self.returnKeyType = .default
         self.dismissKeyboardOnReturn = true
         self.isSecureTextEntry = isSecureTextEntry
@@ -96,7 +94,6 @@ extension AlertTextfield {
     public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = {}
         self.clearButtonMode = .whileEditing
         self.enablesReturnKeyAutomatically = true
         self.disableAutocorrection = false
@@ -105,12 +102,13 @@ extension AlertTextfield {
         self.isSecureTextEntry = false
         self.dismissKeyboardOnReturn = true
         self.keyboardType = keyboardType
+        self.keyboardAppearance = .default
     }
-    public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType, clearButtonMode: UITextField.ViewMode, onCommit: @escaping () -> Void) {
+    public init(text: Binding<String>, placeholder: String, keyboardType: UIKeyboardType, keyboardAppearance: UIKeyboardAppearance, returnKeyType: UIReturnKeyType, clearButtonMode: UITextField.ViewMode) {
         self._text = text
         self.placeholder = placeholder
-        self.onCommit = onCommit
         self.keyboardType = keyboardType
+        self.keyboardAppearance = keyboardAppearance
         self.returnKeyType = returnKeyType
         self.clearButtonMode = clearButtonMode
         self.enablesReturnKeyAutomatically = true

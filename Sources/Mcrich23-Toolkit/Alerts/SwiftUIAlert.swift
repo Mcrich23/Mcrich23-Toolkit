@@ -44,6 +44,7 @@ public struct SwiftUIAlert {
 //                tf.font = textfield.font
                 tf.returnKeyType = textfield.returnKeyType
                 tf.keyboardType = textfield.keyboardType
+                tf.keyboardAppearance = textfield.keyboardAppearance
         }
         func setText() {
             if let textField = presentingAlert.textFields?.first, let text = textField.text {
