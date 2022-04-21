@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 public class TicketCardView_Control: ObservableObject {
     @Published public var anyTicketTriggered = false
@@ -37,6 +38,10 @@ struct ExpandableCardView: View {
                     self.isSelected = true
                     self.control.anyTicketTriggered = true
                     self.isDetectingLongPress = false
+                    Mcrich23_Toolkit.getTopVC { vc in
+                        vc.nearestNavigationController?.setNavigationBarHidden(true, animated: false)
+                        print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
+                    }
                 }
             }
     }
@@ -140,23 +145,53 @@ struct TopView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                        if !isSelected {
+                            VStack {
+                                Spacer()
+                                
+                                SystemMaterialView(style: .regular)
+                                    .frame(height: 45)
+                            }
+                        }
                     case .assetImage(let string):
                         Image(string)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                        if !isSelected {
+                            VStack {
+                                Spacer()
+                                
+                                SystemMaterialView(style: .regular)
+                                    .frame(height: 45)
+                            }
+                        }
+                    case .remoteImage(let named):
+                        if #available(iOS 15, *) {
+                            AsyncImage(url: named) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                            } placeholder: {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                            }
+                            .ignoresSafeArea()
+                        } else {
+                            URLImage(named) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                            }
+                        }
                     case .defaultIcon:
                         EmptyView()
                     }
-                    VStack {
-                        Spacer()
-                        
-                        SystemMaterialView(style: .regular)
-                            .frame(height: 45)
-                    }
                 }
-                
-                    
                 
                 VStack(alignment: .center, spacing: 0) {
                     if self.isSelected {
@@ -194,6 +229,10 @@ struct TopView: View {
                         if self.isSelected {
                             Button(action: {
                                 withAnimation(Animation.timingCurve(0.7, -0.35, 0.2, 0.9, duration: 0.45)) {
+                                    Mcrich23_Toolkit.getTopVC { vc in
+                                        vc.nearestNavigationController?.setNavigationBarHidden(false, animated: true)
+                                        print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
+                                    }
                                     self.isSelected = false
                                     self.control.anyTicketTriggered = false }}) {
                                         Image(systemName: "xmark.circle.fill").foregroundColor(Color(.label))
@@ -212,28 +251,32 @@ struct TopView: View {
                     
                     
                     //MARK: Bottom part
-                    HStack(alignment: .center) {
-                        Text(self.card.briefSummary)
-                            .foregroundColor(Color(.label))
-                            .font(.caption)
-                            .lineLimit(3)
-                        Spacer()
+                    if !isSelected {
+                        HStack(alignment: .center) {
+                            Text(self.card.briefSummary)
+                                .foregroundColor(Color(.label))
+                                .font(.caption)
+                                .lineLimit(3)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 6)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 6)
                 }
             }
         }
         .gesture(DragGesture(minimumDistance: 2, coordinateSpace: .local)
                     .onChanged({ dragGesture in
-//            print("Start loc = \(dragGesture.startLocation.x), \(dragGesture.startLocation.y)")
-//            print("Predicted loc = \(dragGesture.predictedEndLocation.x), \(dragGesture.predictedEndLocation.y)")
-            if dragGesture.predictedEndLocation.y > dragGesture.startLocation.y {
-                withAnimation(Animation.timingCurve(0.7, -0.35, 0.2, 0.9, duration: 0.45)) {
-                    self.isSelected = false
-                    self.control.anyTicketTriggered = false
-                }
-            }
+                        if dragGesture.predictedEndLocation.y > dragGesture.startLocation.y {
+                            withAnimation(Animation.timingCurve(0.7, -0.35, 0.2, 0.9, duration: 0.45)) {
+                                Mcrich23_Toolkit.getTopVC { vc in
+                                    vc.nearestNavigationController?.setNavigationBarHidden(false, animated: true)
+                                    print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
+                                }
+                                self.isSelected = false
+                                self.control.anyTicketTriggered = false
+                            }
+                        }
         })
         )
     }
@@ -248,9 +291,11 @@ struct ExpandableView: View {
     
     
     var body: some View {
-        Text(self.card.description)
-            .font(.body)
-            .foregroundColor(Color(.label))
-            .padding()
+        VStack(alignment: .leading) {
+            Text(self.card.description)
+                .font(.body)
+                .foregroundColor(Color(.label))
+                .padding()
+        }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 public enum glyphImage: Hashable, Equatable {
     case systemImage(named: String)
     case assetImage(named: String)
+    case remoteImage(named: URL)
     case defaultIcon
 }
 public class Mcrich23_Toolkit {

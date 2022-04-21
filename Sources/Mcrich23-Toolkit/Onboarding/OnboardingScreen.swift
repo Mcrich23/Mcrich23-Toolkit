@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 public struct OnboardingScreen: View {
     @Environment(\.presentationMode) var presentationMode
@@ -41,6 +42,31 @@ public struct OnboardingScreen: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 34)
                             .foregroundColor(titleIconColor)
+                    case .remoteImage(named: let named):
+                        if #available(iOS 15, *) {
+                            AsyncImage(url: named) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 34)
+                                    .foregroundColor(titleIconColor)
+                            } placeholder: {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 34)
+                                    .foregroundColor(titleIconColor)
+                            }
+                            .ignoresSafeArea()
+                        } else {
+                            URLImage(named) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 34)
+                                    .foregroundColor(titleIconColor)
+                            }
+                        }
                     case .defaultIcon:
                         EmptyView()
                     }

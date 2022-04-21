@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 public struct FeatureCell: View, Hashable {
     
@@ -26,18 +27,41 @@ public struct FeatureCell: View, Hashable {
             switch image {
             case .systemImage(let string):
                 Image(systemName: string)
-    //                .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
                     .foregroundColor(imageColor)
             case .assetImage(let string):
                 Image(systemName: string)
-    //                .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32)
                     .foregroundColor(imageColor)
+            case .remoteImage(let named):
+                if #available(iOS 15, *) {
+                    AsyncImage(url: named) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32)
+                            .foregroundColor(imageColor)
+                    } placeholder: {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32)
+                            .foregroundColor(imageColor)
+                    }
+                    .ignoresSafeArea()
+                } else {
+                    URLImage(named) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32)
+                            .foregroundColor(imageColor)
+                    }
+                }
             case .defaultIcon:
                 EmptyView()
             }

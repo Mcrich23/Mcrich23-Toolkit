@@ -20,4 +20,15 @@ extension Mcrich23_Toolkit {
         }
         completion(topVC)
     }
+    public static func topVC() -> UIViewController {
+        guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
+            return (UIApplication.shared.windows.first?.rootViewController)!
+        }
+        // iterate til we find the topmost presented view controller
+        // if you don't you'll get an error since you can't present 2 vcs from the same level
+        while let presentedVC = topVC.presentedViewController {
+            topVC = presentedVC
+        }
+        return topVC
+    }
 }

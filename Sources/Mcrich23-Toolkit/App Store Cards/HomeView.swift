@@ -13,34 +13,29 @@ let screen = UIScreen.main.bounds
 
 public struct CardView: View {
     @ObservedObject var control = TicketCardView_Control()
-    @State var showHeader: Bool
-    @State var headerTitle: String
-    @State var headerSubtitile: String
-    @State var headerSubtitleLocation: subtitleLocation
-    @State var create: () -> Void
+    @State var showHeader: ShowHeader
     //change cardData to real tickets
     @Binding var cards: [Card]
+    @State var showCreateButton: ShowCreateButton
     
-    public init(showHeader: Bool, headerTitle: String, headerSubtitle: String, headerSubtitleLocation: subtitleLocation, cards: Binding<[Card]>, create: @escaping () -> Void) {
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton) {
         self.showHeader = showHeader
-        self.headerTitle = headerTitle
-        self.headerSubtitile = headerSubtitle
-        self.headerSubtitleLocation = headerSubtitleLocation
         self._cards = cards
-        self.create = create
+        self.showCreateButton = showCreateButton
     }
     
     public var body: some View {
         
         ZStack {
             ScrollView(.vertical) {
-                if showHeader {
-                    ScrollViewTitleView(create: {
-                        create()
-                    }, headerTitle: headerTitle, headerSubtitile: headerSubtitile, headerSubtitleLocation: headerSubtitleLocation)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 20)
-                        .blur(radius: control.anyTicketTriggered ? 20 : 0)
+                switch showHeader {
+                case .yes(let headerTitle, let headerSubtitle, let headerSubtitleLocation):
+                        ScrollViewTitleView(headerTitle: headerTitle, headerSubtitile: headerSubtitle, headerSubtitleLocation: headerSubtitleLocation, showCreateButton: showCreateButton)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 20)
+                            .blur(radius: control.anyTicketTriggered ? 20 : 0)
+                case .no:
+                    EmptyView()
                 }
                 
                 ForEach(self.cards) { card in
@@ -65,10 +60,10 @@ public struct CardView: View {
 }
 
 struct ScrollViewTitleView: View {
-    @State var create: () -> Void
     @State var headerTitle: String
     @State var headerSubtitile: String
-    @State var headerSubtitleLocation: subtitleLocation
+    @State var headerSubtitleLocation: SubtitleLocation
+    @State var showCreateButton: ShowCreateButton
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -88,8 +83,13 @@ struct ScrollViewTitleView: View {
                     .foregroundColor(Color(.label))
                 Spacer()
                 
-                ShowActionButton(systemSymbol: "plus") {
-                    create()
+                switch showCreateButton {
+                case .yes(let create):
+                    ShowActionButton(systemSymbol: "plus") {
+                        create()
+                    }
+                case .no:
+                    EmptyView()
                 }
                 
             }
@@ -109,20 +109,18 @@ struct ScrollViewTitleView: View {
 }
 
 
-//MARK: Fake Data
-
 //Ticket to -> Card
 public struct Card : Identifiable {
     public var id = UUID()
     
     var title: String
     var subtitle: String
-    var subtitleLocation: subtitleLocation
+    var subtitleLocation: SubtitleLocation
     var briefSummary: String
     var description: String
     var image: glyphImage
     
-    public init(title: String, subtitle: String, subtitleLocation: subtitleLocation, briefSummary: String, description: String, image: glyphImage) {
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, briefSummary: String, description: String, image: glyphImage) {
         self.title = title
         self.subtitle = subtitle
         self.subtitleLocation = subtitleLocation
@@ -132,8 +130,16 @@ public struct Card : Identifiable {
     }
 }
 
-public enum subtitleLocation: Hashable, Equatable {
+public enum SubtitleLocation: Hashable, Equatable {
     case above
     case below
     case none
+}
+public enum ShowCreateButton {
+    case yes(create: () -> Void)
+    case no
+}
+public enum ShowHeader {
+    case yes(headerTitle: String, headerSubtitle: String, headerSubtitleLocation: SubtitleLocation)
+    case no
 }

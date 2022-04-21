@@ -11,7 +11,7 @@ import SwiftUI
 struct ShowActionButton: View {
     //@Binding var showCreateTicket: Bool
     let systemSymbol: String
-    let closure: () -> ()
+    let closure: () -> Void
     
     var body: some View {
         
