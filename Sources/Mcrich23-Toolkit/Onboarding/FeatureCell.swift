@@ -52,7 +52,6 @@ public struct FeatureCell: View, Hashable {
                             .frame(width: 32)
                             .foregroundColor(imageColor)
                     }
-                    .ignoresSafeArea()
                 } else {
                     URLImage(named) { image in
                         image

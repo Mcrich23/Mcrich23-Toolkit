@@ -57,7 +57,6 @@ public struct OnboardingScreen: View {
                                     .frame(width: 34)
                                     .foregroundColor(titleIconColor)
                             }
-                            .ignoresSafeArea()
                         } else {
                             URLImage(named) { image in
                                 image

@@ -179,7 +179,6 @@ struct TopView: View {
                                     .aspectRatio(contentMode: .fill)
                                     .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
                             }
-                            .ignoresSafeArea()
                         } else {
                             URLImage(named) { image in
                                 image
