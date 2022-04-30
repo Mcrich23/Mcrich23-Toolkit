@@ -8,6 +8,33 @@
 import SwiftUI
 import URLImage
 
+
+/**
+ An onboarding screen similar to apple's onboarding screens.
+ 
+ - parameter titleIcon: An icon to go next to the title.
+ - parameter titleIconColor: Color for the icon next to the title.
+ - parameter title: The title.
+ - parameter subtitle: The subtitle (leave blank for it to dissapear.
+ - parameter cells: An array of FeatureCells.
+ # Example #
+ ```
+ OnboardingScreen(
+     titleIcon: .systemImage(named: "plus"),
+     titleIconColor: .yellow,
+     title: "Hello World",
+     subtitle: "Lorem Ipsum",
+     cells: .constant([
+         FeatureCell(
+             image: .systemImage(named: "hand"),
+             imageColor: .red,
+             title: "Title",
+             subtitle: "Subtitle"
+        )
+     ])
+ )
+ ```
+ */
 public struct OnboardingScreen: View {
     @Environment(\.presentationMode) var presentationMode
     var titleIcon: glyphImage = .defaultIcon

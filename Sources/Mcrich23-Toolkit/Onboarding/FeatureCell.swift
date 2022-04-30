@@ -8,6 +8,25 @@
 import SwiftUI
 import URLImage
 
+
+/**
+ The cells in the Mcrich23_Toolkit OnboardingScreen
+ 
+ - parameter image: An icon next to the cell.
+ - parameter imageColor: Color for the icon next to the cell.
+ - parameter title: The title.
+ - parameter subtitle: The subtitle/description (leave blank for it to dissapear).
+ 
+ # Example #
+ ```
+ FeatureCell(
+     image: .systemImage(named: "hand"),
+     imageColor: .red,
+     title: "Title",
+     subtitle: "Subtitle"
+ )
+ ```
+ */
 public struct FeatureCell: View, Hashable {
     
     var image: glyphImage

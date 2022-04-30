@@ -9,6 +9,19 @@ import Foundation
 import UIKit
 
 extension Mcrich23_Toolkit {
+    /**
+     Gets the top UIViewController
+     - returns: A UIViewController
+     
+     # Example #
+     ```
+     Mcrich23_Toolkit.getTopVC { topVC in
+        topVC.present {
+            EmptyView()
+        }
+     }
+     ```
+     */
     public static func getTopVC(completion: @escaping (_ topVC: UIViewController) -> Void) {
         guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
             return
@@ -20,6 +33,17 @@ extension Mcrich23_Toolkit {
         }
         completion(topVC)
     }
+    /**
+     Gets the top UIViewController
+     - returns: A UIViewController
+     
+     # Example #
+     ```
+     Mcrich23_Toolkit.topVC().present {
+        EmmptyView()
+     }
+     ```
+     */
     public static func topVC() -> UIViewController {
         guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
             return (UIApplication.shared.windows.first?.rootViewController)!

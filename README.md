@@ -68,14 +68,29 @@ A screen for welcoming the user or presenting a What's New screen.
 
 #### **Example:**
 ```
-OnboardingScreen(titleIcon: .systemImage(named: "plus"), //An icon to go next to the title
-                 titleIconColor: .yellow, //Color for the icon next to the title
-                    title: "Hello World", //Title
-                    subtitle: "Lorem Ipsum", //Subtitle (leave blank for it to dissapear)
-                    cells: .constant([FeatureCell(image: .systemImage(named: "hand"), //An icon next to the cell
-                                                  imageColor: .red, //Color for the icon next to the cell
-                                                title: "Title", //Title
-                                                subtitle: "Subtitle")]) //Subtitle/Description (leave blank for it to dissapear)
+OnboardingScreen(
+                 titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
+                 titleIconColor: .yellow, // Color for the icon next to the title
+                    title: "Hello World", // Title
+                    subtitle: "Lorem Ipsum", // Subtitle (leave blank for it to dissapear)
+                    cells: .constant([FeatureCell(image: .systemImage(named: "hand"), // An icon next to the cell
+                                                  imageColor: .red, // Color for the icon next to the cell
+                                                title: "Title", // Title
+                                                subtitle: "Subtitle")]) // Subtitle/Description (leave blank for it to dissapear)
+)
+OnboardingScreen(
+    titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
+    titleIconColor: .yellow, // Color for the icon next to the title
+    title: "Hello World", // Title
+    subtitle: "Lorem Ipsum", // Subtitle (leave blank for it to dissapear)
+    cells: .constant([
+        FeatureCell(
+            image: .systemImage(named: "hand"), // An icon next to the cell
+            imageColor: .red, // Color for the icon next to the cell
+            title: "Title", // Title
+            subtitle: "Subtitle" // Subtitle/Description (leave blank for it to dissapear)
+        )
+    ])
 )
 ```
 ### **SwiftUIAlert**
@@ -168,11 +183,12 @@ System ShareSheet for SwiftUI.
 <img height="277" alt="ShareSheet" src="https://user-images.githubusercontent.com/81453549/160920026-0230cadb-9a1f-4d44-8567-ba70454320c7.png">
 
 #### **Example:**
+
 ```
-Mcrich23_Toolkit.presentShareSheet(activityItems: [
-    "Lorem Ipsum",
-    "Please Share This"
-])
+Mcrich23_Toolkit.presentShareSheet(
+    activityItems: ["Hello World"], // Items to share
+    excludedActivityTypes: [] // Applications to exclude from share sheet
+)
 ```
 ### **.onRotate**
 
@@ -202,10 +218,16 @@ var body: some view {
 
 Get the top view controller to do a uikit function on the current view instead of the root view
 
+### **topVC**
+
+#### **Description:**
+
+Get the top view controller to do a uikit function on the current view instead of the root view
+
 #### **Example:**
 
 ```
-Mcrich23_Toolkit.getTopVC { topVC in
-    //Run Action Here
+Mcrich23_Toolkit.topVC.present {
+    EmptyView()
 }
 ```

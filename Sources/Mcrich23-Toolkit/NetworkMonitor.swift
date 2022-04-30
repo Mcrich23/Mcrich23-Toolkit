@@ -8,6 +8,16 @@
 import Foundation
 import Network
 
+/**
+ Monitoring the network connection
+ - returns: connectionType
+ # Example #
+ ```
+ if NetworkMonitor.shared.connectionType != .unknown {
+    print("Connected to the internet)
+ }
+ ```
+ */
 public final class NetworkMonitor {
     public static let shared = NetworkMonitor()
     private let queue = DispatchQueue.global()
