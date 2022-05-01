@@ -113,18 +113,24 @@ struct ScrollViewTitleView: View {
 public struct Card : Identifiable {
     public var id = UUID()
     
-    var title: String
-    var subtitle: String
-    var subtitleLocation: SubtitleLocation
-    var briefSummary: String
-    var description: String
-    var image: glyphImage
+    public var title: String
+    public var subtitle: String
+    public var subtitleLocation: SubtitleLocation
+    public var titleColor: Color
+    public var briefSummary: String
+    public var summaryColor: Color
+    public var enableSummaryInCard: Bool
+    public var description: String
+    public var image: glyphImage
     
-    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, briefSummary: String, description: String, image: glyphImage) {
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: glyphImage) {
         self.title = title
         self.subtitle = subtitle
         self.subtitleLocation = subtitleLocation
+        self.titleColor = titleColor
         self.briefSummary = briefSummary
+        self.summaryColor = summaryColor
+        self.enableSummaryInCard = enableSummaryInCard
         self.description = description
         self.image = image
     }

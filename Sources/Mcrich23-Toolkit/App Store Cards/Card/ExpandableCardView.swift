@@ -172,7 +172,7 @@ struct TopView: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                                    .frame(height: 350, alignment: .bottom)
                             } placeholder: {
                                 Image(systemName: "photo")
                                     .resizable()
@@ -191,7 +191,6 @@ struct TopView: View {
                         EmptyView()
                     }
                 }
-                
                 VStack(alignment: .center, spacing: 0) {
                     if self.isSelected {
                         Rectangle()
@@ -206,18 +205,18 @@ struct TopView: View {
                             if self.card.subtitleLocation == .above {
                                 Text(self.card.subtitle)
                                     .font(.caption)
-                                    .foregroundColor(Color(.label))
+                                    .foregroundColor(self.card.titleColor)
                                     .lineLimit(1)
                             }
                             Text(self.card.title)
                                 .font(.headline)
-                                .foregroundColor(Color(.label))
+                                .foregroundColor(self.card.titleColor)
                                 .lineLimit(2)
                             
                             if self.card.subtitleLocation == .below {
                                 Text(self.card.subtitle)
                                     .font(.caption)
-                                    .foregroundColor(Color(.label))
+                                    .foregroundColor(self.card.titleColor)
                                     .lineLimit(1)
                             }
                             
@@ -234,7 +233,8 @@ struct TopView: View {
                                     }
                                     self.isSelected = false
                                     self.control.anyTicketTriggered = false }}) {
-                                        Image(systemName: "xmark.circle.fill").foregroundColor(Color(.label))
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundColor(self.card.titleColor)
                                             .font(.system(size: 30, weight: .medium))
                                             .opacity(0.7)
                             }
@@ -250,10 +250,10 @@ struct TopView: View {
                     
                     
                     //MARK: Bottom part
-                    if !isSelected {
+                    if !isSelected || self.card.enableSummaryInCard {
                         HStack(alignment: .center) {
                             Text(self.card.briefSummary)
-                                .foregroundColor(Color(.label))
+                                .foregroundColor(self.card.summaryColor)
                                 .font(.caption)
                                 .lineLimit(3)
                             Spacer()

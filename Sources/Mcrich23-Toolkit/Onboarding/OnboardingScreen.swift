@@ -69,9 +69,9 @@ public struct OnboardingScreen: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 34)
                             .foregroundColor(titleIconColor)
-                    case .remoteImage(named: let named):
+                    case .remoteImage(let url):
                         if #available(iOS 15, *) {
-                            AsyncImage(url: named) { image in
+                            AsyncImage(url: url) { image in
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -85,7 +85,7 @@ public struct OnboardingScreen: View {
                                     .foregroundColor(titleIconColor)
                             }
                         } else {
-                            URLImage(named) { image in
+                            URLImage(url) { image in
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)

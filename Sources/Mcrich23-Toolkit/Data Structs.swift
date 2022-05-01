@@ -12,7 +12,7 @@ import Foundation
 public enum glyphImage: Hashable, Equatable {
     case systemImage(named: String)
     case assetImage(named: String)
-    case remoteImage(named: URL)
+    case remoteImage(url: URL)
     case defaultIcon
 }
 /**
