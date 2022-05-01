@@ -20,6 +20,8 @@ struct ExpandableCardView: View {
     @State var viewState = CGSize.zero
     @State var isDetectingLongPress = false
     @State var isSelected = false
+    var selectedCard: () -> Void
+    var deselectedCard: () -> Void
     
     var card: Card
     
@@ -36,6 +38,7 @@ struct ExpandableCardView: View {
                 withAnimation(self.openCardAnimation) {
                     self.isDetectingLongPress = true
                     self.isSelected = true
+                    selectedCard()
                     self.control.anyTicketTriggered = true
                     self.isDetectingLongPress = false
                     Mcrich23_Toolkit.getTopVC { vc in
@@ -56,6 +59,7 @@ struct ExpandableCardView: View {
             .onEnded { _ in
                 withAnimation(self.openCardAnimation) {
                     self.isSelected = true
+                    selectedCard()
                     self.control.anyTicketTriggered = true
                     self.isDetectingLongPress = false
                 }
@@ -78,8 +82,7 @@ struct ExpandableCardView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    TopView(isSelected: self.$isSelected,
-                            card: self.card)
+                    TopView(isSelected: self.$isSelected, selectedCard: selectedCard, deselectedCard: deselectedCard, card: self.card)
                         .environmentObject(self.control)
                         .frame(height: self.normalCardHeight)
                     
@@ -132,6 +135,8 @@ struct ExpandableCardView: View {
 struct TopView: View {
     @EnvironmentObject var control: TicketCardView_Control
     @Binding var isSelected: Bool
+    var selectedCard: () -> Void
+    var deselectedCard: () -> Void
     
     var card: Card
     
@@ -232,6 +237,7 @@ struct TopView: View {
                                         print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
                                     }
                                     self.isSelected = false
+                                    deselectedCard()
                                     self.control.anyTicketTriggered = false }}) {
                                         Image(systemName: "xmark.circle.fill")
                                             .foregroundColor(self.card.titleColor)
@@ -273,6 +279,7 @@ struct TopView: View {
                                     print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
                                 }
                                 self.isSelected = false
+                                deselectedCard()
                                 self.control.anyTicketTriggered = false
                             }
                         }

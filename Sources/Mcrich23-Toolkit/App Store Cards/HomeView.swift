@@ -17,11 +17,22 @@ public struct CardView: View {
     //change cardData to real tickets
     @Binding var cards: [Card]
     @State var showCreateButton: ShowCreateButton
+    var selectedCards: () -> Void
+    var deselectedCards: () -> Void
     
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton, selectedCards: @escaping () -> Void, deselectedCards: @escaping () -> Void) {
+        self.showHeader = showHeader
+        self._cards = cards
+        self.showCreateButton = showCreateButton
+        self.selectedCards = selectedCards
+        self.deselectedCards = deselectedCards
+    }
     public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton) {
         self.showHeader = showHeader
         self._cards = cards
         self.showCreateButton = showCreateButton
+        self.selectedCards = {}
+        self.deselectedCards = {}
     }
     
     public var body: some View {
@@ -39,7 +50,7 @@ public struct CardView: View {
                 }
                 
                 ForEach(self.cards) { card in
-                    ExpandableCardView(card: card)
+                    ExpandableCardView(selectedCard: selectedCards, deselectedCard: deselectedCards,card: card)
                             .environmentObject(self.control)
                             .padding(.horizontal, 20)
                             .padding(.bottom, 30)
@@ -110,7 +121,7 @@ struct ScrollViewTitleView: View {
 
 
 //Ticket to -> Card
-public struct Card : Identifiable {
+public struct Card : Identifiable, Equatable {
     public var id = UUID()
     
     public var title: String
