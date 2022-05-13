@@ -2,11 +2,74 @@
   "object": {
     "pins": [
       {
+        "package": "LoaderUI",
+        "repositoryURL": "https://github.com/Mcrich23/LoaderUI",
+        "state": {
+          "branch": "master",
+          "revision": "af1151c489c087da79f7bf25382ed4d680133b29",
+          "version": null
+        }
+      },
+      {
+        "package": "MultiModal",
+        "repositoryURL": "https://github.com/davdroman/MultiModal",
+        "state": {
+          "branch": null,
+          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
+          "version": "2.1.0"
+        }
+      },
+      {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
+        "state": {
+          "branch": null,
+          "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
+          "version": "0.1.4"
+        }
+      },
+      {
+        "package": "SwiftUIKit",
+        "repositoryURL": "https://github.com/youjinp/SwiftUIKit",
+        "state": {
+          "branch": "master",
+          "revision": "90c0ec689b3b415630a8a71748637588a097609d",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftUIMap",
+        "repositoryURL": "https://github.com/Mcrich23/SwiftUIMap",
+        "state": {
+          "branch": null,
+          "revision": "42db929d7c348a7eaba6f4e59d930efe484aab9e",
+          "version": "1.2.2"
+        }
+      },
+      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
         "state": {
-          "branch": "0.1.1",
-          "revision": "eb6a23fc4cc79545e40a8cf5c82119684750194f",
+          "branch": null,
+          "revision": "889c781539cdd1e6a1111472c711082522aa35c6",
+          "version": "0.1.2"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
+        "state": {
+          "branch": null,
+          "revision": "4042f955f1fdff00ced85545e1eecdbf969b5cd0",
+          "version": "3.1.1"
+        }
+      },
+      {
+        "package": "WKView",
+        "repositoryURL": "https://github.com/rebeloper/WKView",
+        "state": {
+          "branch": "main",
+          "revision": "16e1390b4ed59a82609462d85cd0670d5144f036",
           "version": null
         }
       }
