@@ -7,6 +7,7 @@
 
 import SwiftUI
 import URLImage
+import StepperView
 
 
 /**
@@ -35,20 +36,25 @@ import URLImage
  )
  ```
  */
-public struct OnboardingScreen: View {
+public struct OnboardingScreen<Content: View>: View {
     @Environment(\.presentationMode) var presentationMode
     var titleIcon: glyphImage = .defaultIcon
     var titleIconColor: Color = .gray
     var title: String = ""
     var subtitle: String = ""
-    @Binding var cells: [FeatureCell]
+    var cells: cellType
     
-    public init(titleIcon: glyphImage, titleIconColor: Color, title: String, subtitle: String, cells: Binding<[FeatureCell]>) {
+    public init(titleIcon: glyphImage, titleIconColor: Color, title: String, subtitle: String, cells: cellType) {
         self.titleIcon = titleIcon
         self.titleIconColor = titleIconColor
         self.title = title
         self.subtitle = subtitle
-        self._cells = cells
+        self.cells = cells
+    }
+    
+    public enum cellType {
+        case individual([FeatureCell])
+        case steps(StepperViewOnboarding<Content>)
     }
     
     public var body: some View {
@@ -108,9 +114,16 @@ public struct OnboardingScreen: View {
                 .padding(.horizontal)//, 48)
             Spacer()
             
-            VStack(spacing: 24) {
-                ForEach(cells, id: \.self) { cell in
-                    FeatureCell(image: cell.image, imageColor: cell.imageColor, title: NSLocalizedString(cell.title, comment: ""), subtitle: NSLocalizedString(cell.subtitle, comment: ""))
+            VStack {
+                switch cells {
+                case .individual(let inputedCells):
+                    VStack(spacing: 24) {
+                        ForEach(inputedCells, id: \.self) { cell in
+                            FeatureCell(image: cell.image, imageColor: cell.imageColor, title: NSLocalizedString(cell.title, comment: ""), subtitle: NSLocalizedString(cell.subtitle, comment: ""))
+                        }
+                    }
+                case .steps(let steps):
+                    steps
                 }
             }
             .padding(.leading)
