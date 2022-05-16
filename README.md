@@ -64,7 +64,7 @@ A screen for welcoming the user or presenting a What's New screen.
 
 #### **Image:**
 
-<img width="541" alt="OnboardingScreen Image" src="https://user-images.githubusercontent.com/81453549/160722025-afd6d319-39ad-4e21-9789-f701d08c7512.png">
+<img width="250" alt="OnboardingScreen Image (Individual)" src="https://user-images.githubusercontent.com/81453549/168524616-5a56d2e6-4192-4564-83b3-65a0408f19b9.jpeg"> <img width="250" alt="OnboardingScreen Image (Steps)" src="https://user-images.githubusercontent.com/81453549/168524505-7c5b110d-521f-4ba9-9e62-4bb922c9d5ef.png">
 
 #### **Example:**
 
