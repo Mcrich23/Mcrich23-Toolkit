@@ -12,13 +12,27 @@ import StepperView
 /**
  The StepperView for OnboardingScreen.
  
- - parameter steps: The label, consider using [Text].
+ - parameter steps: The label [Text].
  - parameter indicationTypes: The indicating type.
  - parameter lineOptions: All the options for StepperViewOnboarding.
  - returns: View in format of a StepperView
  
  # Example #
  ```
+ let steps = [ Text(NSLocalizedString("welcome title 1", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 2", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 3", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 4", comment: "")).font(.body)]
+
+ let indicationTypes = [
+     StepperIndicationType
+         .custom(CircledIconView(image: Image(systemName: "plus"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "hand.draw"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "hand.tap"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "eye"), width: 50))
+ ]
+ 
+ 
  StepperViewOnboarding(
     steps: steps,
     indicationTypews: indicationTypes,
@@ -29,20 +43,49 @@ import StepperView
  */
 
 public struct StepperViewOnboarding<Content: View>: View {
-    public var steps: [some View]
-    public var indicationTypes: [StepperIndicationType<Content>]
-    public var lineOptions: StepperLineOptions
+    @State var steps: [Text]
+    @State var indicationTypes: [StepperIndicationType<Content>]
+    @State var indicationTypesCIV: [StepperIndicationType<CircledIconView>]
+    @State var indicationTypesNCV: [StepperIndicationType<NumberedCircleView>]
+    @State var lineOptions: StepperLineOptions
     public init(steps: [Text], indicationTypes: [StepperIndicationType<Content>], lineOptions: StepperLineOptions) {
         self.steps = steps
         self.indicationTypes = indicationTypes
+        self.indicationTypesCIV = []
+        self.indicationTypesNCV = []
         self.lineOptions = lineOptions
     }
-    public var body: some View {
+    var stepper: some View {
         StepperView()
             .addSteps(steps)
-            .indicators(indicationTypes)
             .stepIndicatorMode(StepperMode.vertical)
             .spacing(30)
             .lineOptions(lineOptions)
+    }
+    public var body: some View {
+        if !indicationTypesCIV.isEmpty {
+            stepper
+                .indicators(indicationTypesCIV)
+        } else if !indicationTypesNCV.isEmpty {
+            stepper
+                .indicators(indicationTypesNCV)
+        } else {
+            stepper
+                .indicators(indicationTypesNCV)
+        }
+    }
+    public init(steps: [Text], indicationTypes: [StepperIndicationType<CircledIconView>], lineOptions: StepperLineOptions) {
+        self.steps = steps
+        self.indicationTypes = []
+        self.indicationTypesCIV = indicationTypes
+        self.indicationTypesNCV = []
+        self.lineOptions = lineOptions
+    }
+    public init(steps: [Text], indicationTypes: [StepperIndicationType<NumberedCircleView>], lineOptions: StepperLineOptions) {
+        self.steps = steps
+        self.indicationTypes = []
+        self.indicationTypesCIV = []
+        self.indicationTypesNCV = indicationTypes
+        self.lineOptions = lineOptions
     }
 }
