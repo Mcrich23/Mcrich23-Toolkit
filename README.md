@@ -116,7 +116,7 @@ OnboardingScreen<Content>(
         )
 )
  ```
-See [StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
+See [badrinathvm/StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
 ### **SwiftUIAlert**
 
 #### **Description:**
