@@ -67,23 +67,15 @@ A screen for welcoming the user or presenting a What's New screen.
 <img width="541" alt="OnboardingScreen Image" src="https://user-images.githubusercontent.com/81453549/160722025-afd6d319-39ad-4e21-9789-f701d08c7512.png">
 
 #### **Example:**
+
+##### **Individual:**
 ```
-OnboardingScreen(
-                 titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
-                 titleIconColor: .yellow, // Color for the icon next to the title
-                    title: "Hello World", // Title
-                    subtitle: "Lorem Ipsum", // Subtitle (leave blank for it to dissapear)
-                    cells: .constant([FeatureCell(image: .systemImage(named: "hand"), // An icon next to the cell
-                                                  imageColor: .red, // Color for the icon next to the cell
-                                                title: "Title", // Title
-                                                subtitle: "Subtitle")]) // Subtitle/Description (leave blank for it to dissapear)
-)
 OnboardingScreen(
     titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
     titleIconColor: .yellow, // Color for the icon next to the title
     title: "Hello World", // Title
     subtitle: "Lorem Ipsum", // Subtitle (leave blank for it to dissapear)
-    cells: .constant([
+    cells: .individual([
         FeatureCell(
             image: .systemImage(named: "hand"), // An icon next to the cell
             imageColor: .red, // Color for the icon next to the cell
@@ -93,6 +85,37 @@ OnboardingScreen(
     ])
 )
 ```
+##### **Steps:**
+ ```
+ let steps = [ Text(NSLocalizedString("welcome title 1", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 2", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 3", comment: "")).font(.body),
+               Text(NSLocalizedString("welcome title 4", comment: "")).font(.body)]
+
+ let indicationTypes = [
+     StepperIndicationType
+         .custom(CircledIconView(image: Image(systemName: "plus"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "hand.draw"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "hand.tap"), width: 50)),
+         .custom(CircledIconView(image: Image(systemName: "eye"), width: 50))
+ ]
+ ...
+ 
+OnboardingScreen<Content>(
+    titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
+    titleIconColor: .yellow, // Color for the icon next to the title
+    title: "Hello World", // Title
+    subtitle: "Lorem Ipsum", // Subtitle (leave blank for it to dissapear)
+    cells:
+        .steps(
+            StepperViewOnboarding(
+                steps: steps, // All the steps for the onboarding
+                indicationTypes: indicationTypes, // What goes next to the step text
+                lineOptions: .custom(1, Colors.blue(.teal).rawValue) // All the different line options (see [StepperView](https://github.com/badrinathvm/StepperView) for more info)
+            )
+        )
+)
+ ```
 ### **SwiftUIAlert**
 
 #### **Description:**
