@@ -14,8 +14,10 @@ import StepperView
  
  - parameter steps: The label [Text].
  - parameter indicationTypes: The indicating type.
- - parameter lineOptions: All the options for StepperViewOnboarding.
- - returns: View in format of a StepperView
+ - parameter lineOptions: All the options for a StepperView.
+ - returns: View in format of a StepperView for OnboardingView
+ 
+ See [badrinathvm/StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
  
  # Example #
  ```
