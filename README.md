@@ -111,11 +111,12 @@ OnboardingScreen<Content>(
             StepperViewOnboarding(
                 steps: steps, // All the steps for the onboarding
                 indicationTypes: indicationTypes, // What goes next to the step text
-                lineOptions: .custom(1, Colors.blue(.teal).rawValue) // All the different line options (see [StepperView](https://github.com/badrinathvm/StepperView) for more info)
+                lineOptions: .custom(1, Colors.blue(.teal).rawValue) // All the different line options
             )
         )
 )
  ```
+See [StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
 ### **SwiftUIAlert**
 
 #### **Description:**
