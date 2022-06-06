@@ -133,6 +133,7 @@ public struct Card : Identifiable, Equatable {
     public var enableSummaryInCard: Bool
     public var description: String
     public var image: glyphImage
+    public var featureCells: [FeatureCell]
     
     public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: glyphImage) {
         self.title = title
@@ -144,6 +145,19 @@ public struct Card : Identifiable, Equatable {
         self.enableSummaryInCard = enableSummaryInCard
         self.description = description
         self.image = image
+        self.featureCells = []
+    }
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: glyphImage, featureCells: [FeatureCell]) {
+        self.title = title
+        self.subtitle = subtitle
+        self.subtitleLocation = subtitleLocation
+        self.titleColor = titleColor
+        self.briefSummary = briefSummary
+        self.summaryColor = summaryColor
+        self.enableSummaryInCard = enableSummaryInCard
+        self.description = description
+        self.image = image
+        self.featureCells = featureCells
     }
 }
 
