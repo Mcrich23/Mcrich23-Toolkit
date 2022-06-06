@@ -11,23 +11,23 @@ import SwiftUIX
 
 let screen = UIScreen.main.bounds
 
-public struct CardView<Content: View>: View {
+public struct CardView: View {
     @ObservedObject var control = TicketCardView_Control()
     @State var showHeader: ShowHeader
     //change cardData to real tickets
-    @Binding var cards: [Card<Content>]
+    @Binding var cards: [Card]
     @State var showCreateButton: ShowCreateButton
     var selectedCards: () -> Void
     var deselectedCards: () -> Void
     
-    public init(showHeader: ShowHeader, cards: Binding<[Card<Content>]>, showCreateButton: ShowCreateButton, selectedCards: @escaping () -> Void, deselectedCards: @escaping () -> Void) {
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton, selectedCards: @escaping () -> Void, deselectedCards: @escaping () -> Void) {
         self.showHeader = showHeader
         self._cards = cards
         self.showCreateButton = showCreateButton
         self.selectedCards = selectedCards
         self.deselectedCards = deselectedCards
     }
-    public init(showHeader: ShowHeader, cards: Binding<[Card<Content>]>, showCreateButton: ShowCreateButton) {
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton) {
         self.showHeader = showHeader
         self._cards = cards
         self.showCreateButton = showCreateButton
@@ -49,7 +49,7 @@ public struct CardView<Content: View>: View {
                     EmptyView()
                 }
                 
-                ForEach<[Card<Content>], UUID, Content>(self.cards) { card in
+                ForEach(self.cards) { card in
                     ExpandableCardView(selectedCard: selectedCards, deselectedCard: deselectedCards,card: card)
                             .environmentObject(self.control)
                             .padding(.horizontal, 20)
@@ -121,8 +121,7 @@ struct ScrollViewTitleView: View {
 
 
 //Ticket to -> Card
-public struct Card<Content: View>: Identifiable {
-    
+public struct Card : Identifiable, Equatable {
     public var id = UUID()
     
     public var title: String
@@ -132,10 +131,10 @@ public struct Card<Content: View>: Identifiable {
     public var briefSummary: String
     public var summaryColor: Color
     public var enableSummaryInCard: Bool
-    public var expandedContent: () -> Content
+    public var description: String
     public var image: glyphImage
     
-    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, expandedContent: @escaping () -> Content, image: glyphImage) {
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: glyphImage) {
         self.title = title
         self.subtitle = subtitle
         self.subtitleLocation = subtitleLocation
@@ -143,7 +142,7 @@ public struct Card<Content: View>: Identifiable {
         self.briefSummary = briefSummary
         self.summaryColor = summaryColor
         self.enableSummaryInCard = enableSummaryInCard
-        self.expandedContent = expandedContent
+        self.description = description
         self.image = image
     }
 }
