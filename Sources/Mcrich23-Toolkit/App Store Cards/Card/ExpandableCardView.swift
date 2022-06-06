@@ -297,16 +297,20 @@ struct ExpandableView: View {
     
     
     var body: some View {
-        VStack(alignment: .leading) {
             if card.description == "" { // If using feature cell
-                ForEach(card.featureCells, id: \.self) { cell in
-                    cell
+                VStack(alignment: .center) {
+                    ForEach(card.featureCells, id: \.self) { cell in
+                        cell
+                    }
                 }
+//                .padding()
+                .padding(.horizontal, 50)
             } else { // Using standard description
-                Text(self.card.description)
-                    .font(.body)
-                    .foregroundColor(Color(.label))
-                    .padding()
+                VStack(alignment: .leading) {
+                    Text(self.card.description)
+                        .font(.body)
+                        .foregroundColor(Color(.label))
+                        .padding()
             }
         }
     }
