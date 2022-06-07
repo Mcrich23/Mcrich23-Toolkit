@@ -67,13 +67,13 @@ public struct OnboardingScreen<Content: View>: View {
                         Image(systemName: string)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 34)
+                            .frame(width: 54)
                             .foregroundColor(titleIconColor)
                     case .assetImage(let string):
                         Image(string)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 34)
+                            .frame(width: 54)
                             .foregroundColor(titleIconColor)
                     case .remoteImage(let url):
                         if #available(iOS 15, *) {
@@ -81,13 +81,13 @@ public struct OnboardingScreen<Content: View>: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 34)
+                                    .frame(width: 54)
                                     .foregroundColor(titleIconColor)
                             } placeholder: {
                                 Image(systemName: "photo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 34)
+                                    .frame(width: 54)
                                     .foregroundColor(titleIconColor)
                             }
                         } else {
@@ -95,17 +95,17 @@ public struct OnboardingScreen<Content: View>: View {
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 34)
+                                    .frame(width: 54)
                                     .foregroundColor(titleIconColor)
                             }
                         }
                     case .defaultIcon:
                         EmptyView()
                     }
-                    Text(NSLocalizedString(title, comment: ""))
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
                 }
+                Text(NSLocalizedString(title, comment: ""))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
                 Text(NSLocalizedString(subtitle, comment: ""))
                     .font(.title)
                     .fontWeight(.bold)
