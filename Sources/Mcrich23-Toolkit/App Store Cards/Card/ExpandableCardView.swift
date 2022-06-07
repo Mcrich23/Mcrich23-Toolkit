@@ -301,7 +301,7 @@ struct ExpandableView: View {
                 VStack(alignment: .center) {
                     ForEach(card.featureCells, id: \.self) { cell in
                         cell
-                            .frame(alignment: .center)
+                            .padding()
                     }
                 }
                 .padding(.vertical)
