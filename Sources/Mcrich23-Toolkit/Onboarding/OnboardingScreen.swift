@@ -64,7 +64,7 @@ public struct OnboardingScreen<Content: View>: View {
                 HStack {
                     switch titleIcon {
                     case .systemImage(let string):
-                        Image(string)
+                        Image(systemName: string)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 34)
