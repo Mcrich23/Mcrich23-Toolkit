@@ -22,5 +22,9 @@ public enum glyphImage: Hashable, Equatable {
 Class for all the free floating functions
  */
 public class Mcrich23_Toolkit {
-    
+    static func openUrl(url: URL) {
+        if let url = url {
+            UIApplication.shared.open(url)
+        }
+    }
 }
