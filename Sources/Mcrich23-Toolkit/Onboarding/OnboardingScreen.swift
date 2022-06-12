@@ -53,7 +53,7 @@ public struct OnboardingScreen<Content: View>: View {
     }
     
     public enum cellType {
-        case individual([FeatureCell])
+        case individual(Binding<[FeatureCell]>)
         case steps(StepperViewOnboarding<Content>)
     }
     
