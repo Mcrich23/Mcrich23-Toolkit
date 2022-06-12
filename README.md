@@ -181,20 +181,26 @@ Similar to the cards in the App Store.
 
 #### **Example:**
 ```
-ZStack {
-    NavigationView {
-        CardView(showHeader: true,  //Show the title, subtitle and create button
-        headerTitle: "Home", //Title on the header
-        headerSubtitle: "Subtitle", //Subtitle on the header
-        headerSubtitleLocation: .below, //If Subtitle is above or below the Title
-        cards: .constant(cardData), //All the cards in the view
-        create: { //Action when create (Plus Button) is tapped
+CardView(
+    showHeader: .yes( // Wheather header should be visible
+        headerTitle: "Title", // Title on the header
+        headerSubtitle: "Subtitle", // Subtitle on the header
+        headerSubtitleLocation: .below // If Subtitle is above or below the Title
+    ),
+    cards: $cards, // All the cards in the view
+    showCreateButton: .yes( // Wheather create button should be visible
+        create: { // Action when create (Plus Button) is tapped
             showCreateTicket.toggle()
-        })
-            .navigationBarHidden(true) //Removes Navigation Bar
-            .navigationBarTitle("Tickets") //Sets view title for back buttons
+        }
+    ),
+    maxWidth: 428, // The maximum width for cards
+    selectedCards: { // Action called on selection of a card
+        print("Selected Card")
+    },
+    deselectedCards: { // Action called on deselection of a card
+        print("Deselected Card")
     }
-}
+)
 ```
 ### **ShareSheet**
 

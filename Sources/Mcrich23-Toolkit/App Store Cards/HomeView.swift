@@ -10,7 +10,41 @@ import SwiftUI
 import SwiftUIX
 
 let screen = UIScreen.main.bounds
-
+/**
+ Similar to the cards in the App Store.
+ 
+ - parameter showHeader: Wheather header should be visible.
+ - parameter cards: All the cards in the view.
+ - parameter showCreateButton: Wheather create button should be visible
+ - parameter maxWidth: The maximum width for cards.
+ - parameter selectedCards: Action called on selection of a card.
+ - parameter deselectedCards: Action called on deselection of a card.
+ 
+ # Example #
+ ```
+ CardView(
+     showHeader: .yes(
+         headerTitle: "Title",
+         headerSubtitle: "Subtitle",
+         headerSubtitleLocation: .below
+     ),
+     cards: $cards,
+     showCreateButton: .yes(
+         create: {
+             showCreateTicket.toggle()
+         }
+     ),
+     maxWidth: 428,
+     selectedCards: {
+         print("Selected Card")
+     },
+     deselectedCards: {
+         print("Deselected Card")
+     }
+ )                    
+ ```
+ 
+ */
 public struct CardView: View {
     @ObservedObject var control = TicketCardView_Control()
     @State var showHeader: ShowHeader
@@ -185,11 +219,19 @@ public enum SubtitleLocation: Hashable, Equatable {
     case below
     case none
 }
+///Wheather create button should be visible
 public enum ShowCreateButton {
+    ///- parameter create: Action when create (Plus Button) is tapped
     case yes(create: () -> Void)
     case no
 }
+/// Wheather header should be visible
 public enum ShowHeader {
+    /**
+     - parameter headerTitle: Title on the header.
+     - parameter headerSubtitle: Subtitle on the header.
+     - parameter headerSubtitleLocation: If Subtitle is above or below the Title.
+     */
     case yes(headerTitle: String, headerSubtitle: String, headerSubtitleLocation: SubtitleLocation)
     case no
 }
