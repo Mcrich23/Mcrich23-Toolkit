@@ -20,6 +20,7 @@ struct ExpandableCardView: View {
     @State var viewState = CGSize.zero
     @State var isDetectingLongPress = false
     @State var isSelected = false
+    @State var maxWidth: CGFloat
     var selectedCard: () -> Void
     var deselectedCard: () -> Void
     
@@ -119,6 +120,7 @@ struct ExpandableCardView: View {
             .gesture(self.press)
             .gesture(self.longPressAndRelese)
         } //GeometryReader
+        .frame(maxWidth: self.isSelected ? (screen.width - (normalCardHorizontalPadding * 2)) : maxWidth)
         .frame(height: normalCardHeight)
             
         //MARK: Appearance of other Cards when the selected Card opens

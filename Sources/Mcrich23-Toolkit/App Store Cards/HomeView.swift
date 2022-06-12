@@ -17,6 +17,7 @@ public struct CardView: View {
     //change cardData to real tickets
     @Binding var cards: [Card]
     @State var showCreateButton: ShowCreateButton
+    @State var maxWidth: CGFloat
     var selectedCards: () -> Void
     var deselectedCards: () -> Void
     
@@ -26,6 +27,7 @@ public struct CardView: View {
         self.showCreateButton = showCreateButton
         self.selectedCards = selectedCards
         self.deselectedCards = deselectedCards
+        self.maxWidth = screen.width - (20 * 2)
     }
     public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton) {
         self.showHeader = showHeader
@@ -33,6 +35,15 @@ public struct CardView: View {
         self.showCreateButton = showCreateButton
         self.selectedCards = {}
         self.deselectedCards = {}
+        self.maxWidth = screen.width - (20 * 2)
+    }
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton, maxWidth: CGFloat) {
+        self.showHeader = showHeader
+        self._cards = cards
+        self.showCreateButton = showCreateButton
+        self.selectedCards = {}
+        self.deselectedCards = {}
+        self.maxWidth = maxWidth
     }
     
     public var body: some View {
@@ -50,7 +61,7 @@ public struct CardView: View {
                 }
                 
                 ForEach(self.cards) { card in
-                    ExpandableCardView(selectedCard: selectedCards, deselectedCard: deselectedCards,card: card)
+                    ExpandableCardView(maxWidth: maxWidth, selectedCard: selectedCards, deselectedCard: deselectedCards, card: card)
                             .environmentObject(self.control)
                             .padding(.horizontal, 20)
                             .padding(.bottom, 30)
