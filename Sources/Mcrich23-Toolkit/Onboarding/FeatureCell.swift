@@ -29,10 +29,10 @@ import URLImage
  */
 public struct FeatureCell: View, Hashable {
     
-    var image: glyphImage
-    var title: String
-    var subtitle: String
-    var imageColor: Color
+    public var image: glyphImage
+    public var title: String
+    public var subtitle: String
+    public var imageColor: Color
     
     public init(image: glyphImage, imageColor: Color, title: String, subtitle: String) {
         self.image = image
