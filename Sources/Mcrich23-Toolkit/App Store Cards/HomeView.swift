@@ -29,6 +29,14 @@ public struct CardView: View {
         self.deselectedCards = deselectedCards
         self.maxWidth = screen.width - (20 * 2)
     }
+    public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton, maxWidth: CGFloat, selectedCards: @escaping () -> Void, deselectedCards: @escaping () -> Void) {
+        self.showHeader = showHeader
+        self._cards = cards
+        self.showCreateButton = showCreateButton
+        self.selectedCards = selectedCards
+        self.deselectedCards = deselectedCards
+        self.maxWidth = maxWidth
+    }
     public init(showHeader: ShowHeader, cards: Binding<[Card]>, showCreateButton: ShowCreateButton) {
         self.showHeader = showHeader
         self._cards = cards
