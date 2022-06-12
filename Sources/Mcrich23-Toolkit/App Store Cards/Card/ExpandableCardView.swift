@@ -75,7 +75,6 @@ struct ExpandableCardView: View {
                 self.viewState = .zero
             }
     }
-
     
     //MARK: View Body
     var body: some View {
@@ -120,7 +119,6 @@ struct ExpandableCardView: View {
             .gesture(self.press)
             .gesture(self.longPressAndRelese)
         } //GeometryReader
-        .frame(width: screen.width - (normalCardHorizontalPadding * 2))
         .frame(height: normalCardHeight)
             
         //MARK: Appearance of other Cards when the selected Card opens
