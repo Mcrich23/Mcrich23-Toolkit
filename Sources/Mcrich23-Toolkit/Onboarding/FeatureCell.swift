@@ -33,12 +33,22 @@ public struct FeatureCell: View, Hashable {
     public var title: String
     public var subtitle: String
     public var imageColor: Color
+    public var id: Int
     
     public init(image: glyphImage, imageColor: Color, title: String, subtitle: String) {
         self.image = image
         self.title = title
         self.subtitle = subtitle
         self.imageColor = imageColor
+        self.id = Int.random(in: 0...99999999)
+    }
+    
+    public init(image: glyphImage, imageColor: Color, title: String, subtitle: String, id: Int) {
+        self.image = image
+        self.title = title
+        self.subtitle = subtitle
+        self.imageColor = imageColor
+        self.id = id
     }
     
     public var body: some View {
