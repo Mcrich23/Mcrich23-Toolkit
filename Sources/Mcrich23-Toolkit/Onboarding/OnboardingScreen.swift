@@ -119,7 +119,7 @@ public struct OnboardingScreen<Content: View>: View {
                 case .individual(let inputedCells):
                     VStack(spacing: 24) {
                         ForEach(inputedCells, id: \.self) { cell in
-                            FeatureCell(image: cell.image, imageColor: cell.imageColor, title: NSLocalizedString(cell.title, comment: ""), subtitle: NSLocalizedString(cell.subtitle, comment: ""))
+                            FeatureCell(image: cell.image.wrappedValue, imageColor: cell.imageColor.wrappedValue, title: NSLocalizedString(cell.title.wrappedValue, comment: ""), subtitle: NSLocalizedString(cell.subtitle.wrappedValue, comment: ""))
                         }
                     }
                 case .steps(let steps):
