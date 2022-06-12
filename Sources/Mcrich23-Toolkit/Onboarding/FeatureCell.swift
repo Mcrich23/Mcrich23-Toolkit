@@ -43,7 +43,7 @@ public struct FeatureCell: View, Hashable {
         self.id = String(describing: Int.random(in: 0...99999999))
     }
     
-    public init(image: glyphImage, imageColor: Color, title: String, subtitle: String, id: String) {
+    public init(id: String, image: glyphImage, imageColor: Color, title: String, subtitle: String) {
         self.image = image
         self.title = title
         self.subtitle = subtitle
