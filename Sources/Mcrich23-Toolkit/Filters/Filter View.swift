@@ -10,12 +10,12 @@ import SwiftUI
 #if os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst)// || os(macOS)
 import SwiftUIX
 
-public struct CapsuleMultiFilter: View {
-    @Binding var menuContent: AnyView
+public struct CapsuleMultiFilter<Content: View>: View {
+    @Binding var menuContent: Content
     @Binding var opt: [String]
     @Binding var selected: [String]
     
-    public init(menuContent: Binding<AnyView>, opt: Binding<[String]>, selected: Binding<[String]>) {
+    public init(menuContent: Binding<Content>, opt: Binding<[String]>, selected: Binding<[String]>) {
         self._menuContent = menuContent
         self._opt = opt
         self._selected = selected
@@ -24,9 +24,9 @@ public struct CapsuleMultiFilter: View {
     public var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(selected, id: \.self) { selectedRest in
-                    stringFilterView(name: selectedRest) { Rest in
-                        let remove = selected.firstIndex(of: Rest)!
+                ForEach(selected, id: \.self) { selectedItem in
+                    stringFilterView(name: selectedItem) { item in
+                        let remove = selected.firstIndex(of: item)!
                         selected.remove(at: remove)
                     }
                 }
