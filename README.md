@@ -12,7 +12,7 @@ This is a package that I made that has a bunch of qualities of life.
 
 The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manager](https://swift.org/package-manager/).
 
- 
+
 1. In Xcode, open your project and navigate to **File** → **Add Packages...**
 2. Paste the repository URL (`https://github.com/Mcrich23/Mcrich23-Toolkit`) and click **Next**.
 3. For **Rules**, select **Up To Next Minor Version** (With base version set to 0.6.1).
