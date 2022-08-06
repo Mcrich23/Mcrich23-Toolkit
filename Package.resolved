@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "BetterSafariView",
+        "repositoryURL": "https://github.com/stleamist/BetterSafariView",
+        "state": {
+          "branch": null,
+          "revision": "be7248720af18c57c7a1348b20f6212379b28c6b",
+          "version": "2.4.0"
+        }
+      },
+      {
         "package": "LoaderUI",
         "repositoryURL": "https://github.com/Mcrich23/LoaderUI",
         "state": {
@@ -20,39 +29,12 @@
         }
       },
       {
-        "package": "SourceKitten",
-        "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
+        "package": "StepperView",
+        "repositoryURL": "https://github.com/badrinathvm/StepperView",
         "state": {
-          "branch": null,
-          "revision": "817dfa6f2e09b0476f3a6c9dbc035991f02f0241",
-          "version": "0.32.0"
-        }
-      },
-      {
-        "package": "swift-argument-parser",
-        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
-        "state": {
-          "branch": null,
-          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
-          "version": "1.0.3"
-        }
-      },
-      {
-        "package": "SwiftSyntax",
-        "repositoryURL": "https://github.com/apple/swift-syntax.git",
-        "state": {
-          "branch": null,
-          "revision": "0b6c22b97f8e9320bca62e82cdbee601cf37ad3f",
-          "version": "0.50600.1"
-        }
-      },
-      {
-        "package": "SwiftLint",
-        "repositoryURL": "https://github.com/realm/SwiftLint",
-        "state": {
-          "branch": null,
-          "revision": "e5791ec16ccc1560840c46ed57122c888167d740",
-          "version": "0.47.0"
+          "branch": "master",
+          "revision": "42c1ebf5dd025b02802bdf9635b41349ff94b92e",
+          "version": null
         }
       },
       {
@@ -62,15 +44,6 @@
           "branch": null,
           "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
           "version": "0.1.4"
-        }
-      },
-      {
-        "package": "SwiftUIKit",
-        "repositoryURL": "https://github.com/youjinp/SwiftUIKit",
-        "state": {
-          "branch": "master",
-          "revision": "90c0ec689b3b415630a8a71748637588a097609d",
-          "version": null
         }
       },
       {
@@ -92,24 +65,6 @@
         }
       },
       {
-        "package": "SwiftyTextTable",
-        "repositoryURL": "https://github.com/scottrhoyt/SwiftyTextTable.git",
-        "state": {
-          "branch": null,
-          "revision": "c6df6cf533d120716bff38f8ff9885e1ce2a4ac3",
-          "version": "0.9.0"
-        }
-      },
-      {
-        "package": "SWXMLHash",
-        "repositoryURL": "https://github.com/drmohundro/SWXMLHash.git",
-        "state": {
-          "branch": null,
-          "revision": "6469881a3f30417c5bb02404ea4b69207f297592",
-          "version": "6.0.0"
-        }
-      },
-      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {
@@ -125,15 +80,6 @@
           "branch": "main",
           "revision": "16e1390b4ed59a82609462d85cd0670d5144f036",
           "version": null
-        }
-      },
-      {
-        "package": "Yams",
-        "repositoryURL": "https://github.com/jpsim/Yams.git",
-        "state": {
-          "branch": null,
-          "revision": "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
-          "version": "4.0.6"
         }
       }
     ]
