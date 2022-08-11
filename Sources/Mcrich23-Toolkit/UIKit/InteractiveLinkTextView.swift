@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class InteractiveLinkTextView: UITextView {
+public class InteractiveLinkTextView: UITextView {
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
