@@ -11,12 +11,12 @@ import SafariServices
 
 public class InteractiveLinkLabel: UILabel {
     
-    required init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.configure()
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
     }
@@ -25,7 +25,7 @@ public class InteractiveLinkLabel: UILabel {
         isUserInteractionEnabled = true
     }
     
-    var customUrlHandler: (_ url: URL) -> Void = { url in
+    public var customUrlHandler: (_ url: URL) -> Void = { url in
         UIApplication.shared.open(url)
     }
     

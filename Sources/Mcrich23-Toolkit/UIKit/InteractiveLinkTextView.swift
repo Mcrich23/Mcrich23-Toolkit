@@ -11,12 +11,12 @@ import SafariServices
 
 public class InteractiveLinkTextView: UITextView {
     
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         configure()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
     }
@@ -28,7 +28,7 @@ public class InteractiveLinkTextView: UITextView {
         isUserInteractionEnabled = true
     }
     
-    var customUrlHandler: (_ url: URL) -> Void = { url in
+    public var customUrlHandler: (_ url: URL) -> Void = { url in
         UIApplication.shared.open(url)
     }
     
