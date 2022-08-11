@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class InteractiveLinkLabel: UILabel {
+public class InteractiveLinkLabel: UILabel {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
