@@ -29,7 +29,7 @@ public class InteractiveLinkLabel: UILabel {
         UIApplication.shared.open(url)
     }
     
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         
         let superBool = super.point(inside: point, with: event)
         
