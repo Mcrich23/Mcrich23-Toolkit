@@ -28,25 +28,13 @@ let package = Package(
         .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
         .package(name: "SwiftUIMap", url: "https://github.com/Mcrich23/SwiftUIMap", from: "1.1.0"),
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
-<<<<<<< HEAD
-        .package(name: "BetterSafariView", url: "https://github.com/stleamist/BetterSafariView", from: "2.4.0"),
-        .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", from: "1.6.2"),
-        .package(name: "Shimmer", url: "https://github.com/markiv/SwiftUI-Shimmer", from: "1.0.0"),
-        .package(name: "GoogleMobileAds", url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "9.0.0"),
-=======
-        .package(name: "BetterSafariView", url: "https://github.com/stleamist/BetterSafariView", from: "2.4.0")
->>>>>>> parent of 858022d (Added google ad mob)
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-<<<<<<< HEAD
-            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "BetterSafariView", "SwiftUIBackports", "GoogleMobileAds", "Shimmer"]
-=======
             dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "BetterSafariView"]
->>>>>>> parent of 858022d (Added google ad mob)
             )
         ]
 )
