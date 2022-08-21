@@ -30,7 +30,7 @@ let package = Package(
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
         .package(name: "BetterSafariView", url: "https://github.com/stleamist/BetterSafariView", from: "2.4.0"),
         .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", from: "1.6.2"),
-        .package(name: "SwiftUI-Shimmer", url: "https://github.com/markiv/SwiftUI-Shimmer", from: "1.0.1"),
+        .package(name: "SwiftUIShimmer", url: "https://github.com/markiv/SwiftUI-Shimmer", from: "1.0.1"),
         .package(name: "GoogleMobileAds", url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "9.0.0")
     ],
     targets: [
@@ -38,7 +38,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "BetterSafariView", "SwiftUIBackports", "SwiftUI-Shimmer", "GoogleMobileAds"]
+            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "BetterSafariView", "SwiftUIBackports", "GoogleMobileAds", "SwiftUIShimmer"]
             )
         ]
 )
