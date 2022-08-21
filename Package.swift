@@ -30,8 +30,7 @@ let package = Package(
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
         .package(name: "BetterSafariView", url: "https://github.com/stleamist/BetterSafariView", from: "2.4.0"),
         .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", from: "1.6.2"),
-//        .package(name: "SwiftUIShimmer", url: "https://github.com/markiv/SwiftUI-Shimmer", from: "1.0.1"),
-        Package.Dependency.package(name: "SwiftUIShimmer", path: "./SwiftUI-Shimmer")
+        .package(name: "SwiftUIShimmer", url: "https://github.com/markiv/SwiftUI-Shimmer", from: "1.0.1"),
         .package(name: "GoogleMobileAds", url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "9.0.0")
     ],
     targets: [
