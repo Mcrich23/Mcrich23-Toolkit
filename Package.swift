@@ -34,7 +34,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "BetterSafariView"]
+            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView"]
             )
         ]
 )
