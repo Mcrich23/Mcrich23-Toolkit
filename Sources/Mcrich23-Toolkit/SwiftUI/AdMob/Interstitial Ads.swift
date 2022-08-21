@@ -11,21 +11,22 @@ import GoogleMobileAds
 import Shimmer
 
 public final class Interstitial: NSObject, GADFullScreenContentDelegate {
-  static let shared = Interstitial()
     var interstitialID = "" {
         didSet {
-            LoadInterstitial(false)
+            LoadInterstitial(false, adUnitID: self.interstitialID)
         }
     }
     var interstitial: GADInterstitialAd?
   var sheet: (() -> Void)? // this closure will be executed after dismissing the ad
+    var areAdsDisabled = false
 
-    override init(adUnitID: String, areAdsDisabled: Bool) {
+    public init(adUnitID: String, areAdsDisabled: Bool) {
         super.init()
-        LoadInterstitial(getNew: true, adUnitID: adUnitID, areAdsDisabled: areAdsDisabled)
+        self.areAdsDisabled = areAdsDisabled
+        LoadInterstitial(true, adUnitID: adUnitID)
   }
 
-    func LoadInterstitial(_ getNew: Bool, adUnitID: String, areAdsDisabled: Bool) {
+    func LoadInterstitial(_ getNew: Bool, adUnitID: String) {
         let req = GADRequest()
         if !UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") && !areAdsDisabled {
             if getNew {
@@ -75,15 +76,15 @@ public final class Interstitial: NSObject, GADFullScreenContentDelegate {
   }
     /// Tells the delegate that the ad failed to present full screen content.
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
-        LoadInterstitial(false)
+        LoadInterstitial(false, adUnitID: self.interstitialID)
         if let presentSheet = sheet {
             presentSheet()
         }
     }
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        LoadInterstitial(false)
+    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        LoadInterstitial(false, adUnitID: self.interstitialID)
         if let presentSheet = sheet {
             presentSheet()
         }

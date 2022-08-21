@@ -15,17 +15,16 @@ public final class BannerViewController: UIViewControllerRepresentable {
     var adUnitID: String = ""
     var areAdsDisabled: Bool = false
     
-    override init(adUnitID: String, areAdsDisabled: Bool) {
-        super.init()
+    public init(adUnitID: String, areAdsDisabled: Bool) {
         self.adUnitID = adUnitID
         self.areAdsDisabled = areAdsDisabled
     }
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         Coordinator(bannerViewController: self)
     }
     
-    func makeUIViewController(context: Context) -> UIViewController {
+    public func makeUIViewController(context: Context) -> UIViewController {
         let banner = GADBannerView(adSize: GADAdSizeBanner)
         let viewController = UIViewController()
         banner.delegate = context.coordinator
@@ -33,7 +32,7 @@ public final class BannerViewController: UIViewControllerRepresentable {
         banner.rootViewController = viewController
         banner.load(GADRequest())
         
-        if !Utilities.isFastlaneRunning && !areAdsDisabled {
+        if !UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") && !areAdsDisabled {
             viewController.view.addSubview(banner)
             viewController.view.backgroundColor = .clear
             viewController.view.frame = CGRect(origin: .zero, size: GADAdSizeBanner.size)
@@ -41,19 +40,19 @@ public final class BannerViewController: UIViewControllerRepresentable {
         return viewController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+    public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
     
-    class Coordinator: NSObject, GADBannerViewDelegate {
+    public class Coordinator: NSObject, GADBannerViewDelegate {
         
         var bannerViewController: BannerViewController
         
         init(bannerViewController: BannerViewController) {
             self.bannerViewController = bannerViewController
         }
-        func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        public func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
             print("banner failed to show! Error: \(String(describing: error))")
         }
-        func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
             
         }
     }
@@ -61,14 +60,19 @@ public final class BannerViewController: UIViewControllerRepresentable {
 
 public struct BannerAds: View {
     @State var adUnitID: String
+    @State var areAdsDisabled: Bool
+    public init(adUnitID: String, areAdsDisabled: Bool) {
+        self.adUnitID = adUnitID
+        self.areAdsDisabled = areAdsDisabled
+    }
     public var body: some View {
-        if !Utilities.isFastlaneRunning || Utilities.areAdsDisabled {
+        if !UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") && !areAdsDisabled {
             ZStack {
                 Rectangle()
                     .background(.white)
                     .shimmering(active: true, duration: 0.75, bounce: false)
                     .frame(width: 320, height: 50)
-                BannerViewController(adUnitID: adUnitID)
+                BannerViewController(adUnitID: adUnitID, areAdsDisabled: areAdsDisabled)
                     .frame(width: 320, height: 50)
             }
         }
