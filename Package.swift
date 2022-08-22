@@ -28,13 +28,14 @@ let package = Package(
         .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
         .package(name: "SwiftUIMap", url: "https://github.com/Mcrich23/SwiftUIMap", from: "1.1.0"),
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
+        .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", from: "1.6.2")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView"]
+            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "WKView", "MultiModal", "SwiftUIMap", "StepperView", "SwiftUIBackports"]
             )
         ]
 )
