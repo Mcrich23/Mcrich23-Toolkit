@@ -20,9 +20,13 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 5. Check **Mcrich23-Toolkit**
 6. Click **Add To Project**
 
-## **Functions**
+## **SwiftUI Functions**
 
 ### **CapsuleMultiFilter**
+
+#### **Description:**
+
+A nice multiple filter UI
 
 #### **Image:**
 
@@ -30,30 +34,20 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 
 #### **Example:**
 ```
-CapsuleMultiFilter(menuContent: .constant(AnyView(VStack { //Passes in the view for the plus button menu. Must use .constant() so that the view updates.
-    if horizantalSizeClass == .regular {
-        ForEach(filterOpt, id: \.self) { text in
-            if !filter.contains(text) {
-                Button {
-                    filter.append(text)
-                } label: {
-                    Text(text)
+CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus button menu. Must use .constant() so that the view updates.
+        VStack {
+            ForEach(viewModel.filterOpt, id: \.self) { text in
+                if !viewModel.filter.contains(text) {
+                    Button {
+                        viewModel.filter.append(text)
+                    } label: {
+                        Text(text)
+                    }
                 }
             }
-        }
-    } else {
-        ForEach(filterOpt, id: \.self) { text in
-            if !filter.contains(text) {
-                Button {
-                    filter.append(text)
-                } label: {
-                    Text(text)
-                }
-            }
-        }
-    }
-})), opt: filterOpt, //Use an array that are the same options as in the menu
-selected: $filter //An array of currently selected filters
+        }}),
+    opt: $viewModel.filterOpt, //Use an array that are the same options as in the menu
+    selected: $viewModel.filter //An array of currently selected filters
 )
 ```
 ### **OnboardingScreen**
@@ -248,6 +242,14 @@ var body: some view {
 
 Get the top view controller to do a uikit function on the current view instead of the root view
 
+#### **Example:**
+
+```
+Mcrich23-Toolkit.getTopVC { vc in
+    vc.present(view, animated: true)
+}
+```
+
 ### **topVC**
 
 #### **Description:**
@@ -260,4 +262,74 @@ Get the top view controller to do a uikit function on the current view instead o
 Mcrich23_Toolkit.topVC.present {
     EmptyView()
 }
+```
+## **UIKit Functions**
+
+### **InteracteractiveLinkLabel**
+
+#### **Description**
+
+Easily hyperlink your UILabel with this component of the Mcrich23-Toolkit
+
+### **Example:**
+
+```
+let label: InteractiveLinkLabel = {
+    let label = InteractiveLinkLabel()
+    
+    let firstChunk = NSMutableAttributedString(string: "Hello, my name is Morris, you cancheck out my website", attributes: nil) // Just text
+    let website = NSMutableAttributedString(string: "here",attributes:[NSAttributedString.Key.link: URL(string: "https://mcrich23.com")!]) //Hyperlinked word
+    
+    //Put it together
+    let fullAttributtedText = NSMutableAttributedString()
+    fullAttributtedText.append(firstChunk)
+    fullAttributtedText.append(tos)
+    
+    label.attributedText = fullAttributtedText
+    label.numberOfLines = 0
+    label.sizeToFit()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.isUserInteractionEnabled = true
+    label.customUrlHandler = { url in // Open url in a custom way, Note: you may need todeclare in viewDidLoad
+        let safari = SFSafariViewController(url: url)
+        self.present(safari, animated: true)
+    }
+    
+    return label
+}()
+```
+
+### **InteracteractiveLinkTextView**
+
+#### **Description**
+
+Easily hyperlink your UITextView with this component of the Mcrich23-Toolkit
+
+### **Example:**
+
+```
+let textView: InteractiveLinkLabel = {
+    let textView = InteractiveLinkLabel()
+    
+    let firstChunk = NSMutableAttributedString(string: "Hello, my name is Morris, you cancheck out my website", attributes: nil) // Just text
+    let website = NSMutableAttributedString(string: "here",attributes:[NSAttributedString.Key.link: URL(string: "https://mcrich23.com")!]) //Hyperlinked word
+    
+    //Put it together
+    let fullAttributtedText = NSMutableAttributedString()
+    fullAttributtedText.append(firstChunk)
+    fullAttributtedText.append(tos)
+    
+    // Modifiers
+    textView.attributedText = fullAttributtedText
+    textView.numberOfLines = 0
+    textView.sizeToFit()
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    textView.isUserInteractionEnabled = true
+    textView.customUrlHandler = { url in // Open url in a custom way, Note: you may need todeclare in viewDidLoad
+        let safari = SFSafariViewController(url: url)
+        self.present(safari, animated: true)
+    }
+    
+    return label
+}()
 ```

@@ -9,6 +9,40 @@
 import UIKit
 import SafariServices
 
+/**
+ Easily hyperlink your UILabel with this component of the Mcrich23-Toolkit
+ 
+ - parameter customUrlHandler: Open url in a custom way, Note: you may need to declare in viewDidLoad.
+ 
+ # Example #
+ ```
+ let label: InteractiveLinkLabel = {
+     let label = InteractiveLinkLabel()
+     
+     let firstChunk = NSMutableAttributedString(string: "Hello, my name is Morris, you can check out my website", attributes: nil) // Just text
+     let website = NSMutableAttributedString(string: "here", attributes:[NSAttributedString.Key.link: URL(string: "https://mcrich23.com")!]) // Hyperlinked word
+     
+     //Put it together
+     let fullAttributtedText = NSMutableAttributedString()
+     fullAttributtedText.append(firstChunk)
+     fullAttributtedText.append(tos)
+     
+     label.attributedText = fullAttributtedText
+     label.numberOfLines = 0
+     label.sizeToFit()
+     label.translatesAutoresizingMaskIntoConstraints = false
+     label.isUserInteractionEnabled = true
+     label.customUrlHandler = { url in // Open url in a custom way, Note: you may need to declare in viewDidLoad
+         let safari = SFSafariViewController(url: url)
+         self.present(safari, animated: true)
+     }
+     
+     return label
+ }()
+ ```
+ 
+ */
+
 public class InteractiveLinkLabel: UILabel {
     
     public required init(coder aDecoder: NSCoder) {
