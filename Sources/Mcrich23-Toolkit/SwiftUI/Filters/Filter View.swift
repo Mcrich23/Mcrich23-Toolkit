@@ -11,11 +11,11 @@ import SwiftUI
 import SwiftUIX
 
 public struct CapsuleMultiFilter<Content: View>: View {
-    @Binding var menuContent: Content
+    @Binding var menuContent: () -> Content
     @Binding var opt: [String]
     @Binding var selected: [String]
     
-    public init(menuContent: Binding<Content>, opt: Binding<[String]>, selected: Binding<[String]>) {
+    public init(menuContent: Binding<() -> Content>, opt: Binding<[String]>, selected: Binding<[String]>) {
         self._menuContent = menuContent
         self._opt = opt
         self._selected = selected
@@ -32,7 +32,7 @@ public struct CapsuleMultiFilter<Content: View>: View {
                 }
                 if selected.sorted() != opt.sorted() {
                     Menu(content: {
-                        menuContent
+                        menuContent()
                     }, label: {
                         Image(systemName: "plus.circle")
                     })
