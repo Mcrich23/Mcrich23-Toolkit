@@ -16,6 +16,8 @@ public class TicketCardView_Control: ObservableObject {
 }
 
 struct ExpandableCardView: View {
+    
+    let screen = UIScreen.main.bounds
     @EnvironmentObject var control: TicketCardView_Control
     @State var viewState = CGSize.zero
     @State var isDetectingLongPress = false

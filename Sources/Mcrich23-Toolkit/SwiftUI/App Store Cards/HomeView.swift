@@ -9,7 +9,6 @@
 import SwiftUI
 import SwiftUIX
 
-let screen = UIScreen.main.bounds
 /**
  Similar to the cards in the App Store.
  
@@ -46,6 +45,8 @@ let screen = UIScreen.main.bounds
  
  */
 public struct CardView: View {
+    let screen = UIScreen.main.bounds
+    
     @ObservedObject var control = TicketCardView_Control()
     @State var showHeader: ShowHeader
     //change cardData to real tickets
