@@ -55,7 +55,7 @@ public struct CapsuleMultiFilter<Content: View>: View {
                         selected.remove(at: remove)
                     }
                 }
-                if selected.sorted() != opt.sorted() {
+                if Array(Set(opt)).sorted() != (selected.sorted()) {
                     Menu(content: {
                         menuContent()
                     }, label: {
