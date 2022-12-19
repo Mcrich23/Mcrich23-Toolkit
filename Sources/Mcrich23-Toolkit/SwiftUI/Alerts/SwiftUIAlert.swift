@@ -13,7 +13,7 @@ import SwiftUIX
 
 public struct SwiftUIAlert {
     public static func show(title: String, message: String, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
-        let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
+        let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: "Title in SwiftUIAlert"), message: NSLocalizedString(message, comment: "Message in SwiftUIAlert"), preferredStyle: preferredStyle)
         for action in actions {
             presentingAlert.addAction(action)
         }
@@ -22,7 +22,7 @@ public struct SwiftUIAlert {
         }
     }
     public static func textfieldShow(title: String, message: String, preferredStyle: UIAlertController.Style, textfield: AlertTextfield, actions: [UIAlertAction]) {
-        let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(message, comment: ""), preferredStyle: preferredStyle)
+        let presentingAlert = UIAlertController(title: NSLocalizedString(title, comment: "Title in SwiftUI TextfieldAlert"), message: NSLocalizedString(message, comment: "Message in SwiftUI TextfieldAlert"), preferredStyle: preferredStyle)
             presentingAlert.addTextField { tf in
                 tf.autocorrectionType = textfield.autocorrectionType
                 tf.placeholder = NSLocalizedString(textfield.placeholder, comment: "")
