@@ -54,6 +54,11 @@ public struct ConvertedGlyphImage<Content: View, Modifier: View>: View {
         self._defaultIcon = State(initialValue: defaultIcon)
         self._modifiers = State(initialValue: modifiers)
     }
+    public init(glyphImage: Binding<glyphImage>, defaultIcon: Content) {
+        self._glyphImage = glyphImage
+        self._defaultIcon = State(initialValue: defaultIcon)
+        self._modifiers = State(initialValue: {image in return image as! Modifier})
+    }
     public var body: some View {
         HStack {
             switch glyphImage {
