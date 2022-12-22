@@ -23,7 +23,7 @@ extension Mcrich23_Toolkit {
      ```
      */
     public static func getTopVC(completion: @escaping (_ topVC: UIViewController) -> Void) {
-        guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
+        guard var topVC = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first?.rootViewController else {
             return
         }
         // iterate til we find the topmost presented view controller
@@ -45,8 +45,8 @@ extension Mcrich23_Toolkit {
      ```
      */
     public static func topVC() -> UIViewController {
-        guard var topVC = UIApplication.shared.windows.first?.rootViewController else {
-            return (UIApplication.shared.windows.first?.rootViewController)!
+        guard var topVC = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first?.rootViewController else {
+            return (UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first?.rootViewController)!
         }
         // iterate til we find the topmost presented view controller
         // if you don't you'll get an error since you can't present 2 vcs from the same level

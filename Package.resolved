@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "BetterSafariView",
-        "repositoryURL": "https://github.com/stleamist/BetterSafariView",
+        "package": "DeviceKit",
+        "repositoryURL": "https://github.com/devicekit/DeviceKit",
         "state": {
           "branch": null,
-          "revision": "be7248720af18c57c7a1348b20f6212379b28c6b",
-          "version": "2.4.0"
+          "revision": "d37e70cb2646666dcf276d7d3d4a9760a41ff8a6",
+          "version": "4.9.0"
         }
       },
       {
@@ -44,6 +44,15 @@
           "branch": null,
           "revision": "f2616860a41f9d9932da412a8978fec79c06fe24",
           "version": "0.1.4"
+        }
+      },
+      {
+        "package": "SwiftUIBackports",
+        "repositoryURL": "https://github.com/shaps80/SwiftUIBackports",
+        "state": {
+          "branch": null,
+          "revision": "d9842f24656ff7c6116dc207b60f0b6d302a5a9a",
+          "version": "1.9.0"
         }
       },
       {
