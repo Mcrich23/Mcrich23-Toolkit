@@ -33,7 +33,7 @@ public final class NetworkMonitor {
         case unknown
     }
     
-    private init() {
+    public init() {
         monitor = NWPathMonitor()
     }
     
@@ -43,6 +43,19 @@ public final class NetworkMonitor {
             self?.isConnected = path.status != .unsatisfied
             
             self?.getConnectionType(path)
+        }
+    }
+    
+    public func startMonitoring(onUpdate: @escaping (_ isConnected: Bool) -> Void) {
+        monitor.start(queue: queue)
+        monitor.pathUpdateHandler = { [weak self] path in
+            self?.isConnected = path.status != .unsatisfied
+            self?.getConnectionType(path)
+            if path.status != .unsatisfied {
+                onUpdate(true)
+            } else {
+                onUpdate(false)
+            }
         }
     }
     
