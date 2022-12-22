@@ -119,6 +119,7 @@ public struct CardView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
+        .environmentObject(control)
         .statusBar(hidden: self.control.anyTicketTriggered)
     }
     

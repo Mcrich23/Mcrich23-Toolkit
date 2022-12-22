@@ -11,6 +11,8 @@ import URLImage
 
 public class TicketCardView_Control: ObservableObject {
     @Published public var anyTicketTriggered = false
+    @Published var isSelectedHeight = UIScreen.main.bounds.height
+    @Published var isSelectedWidth = UIScreen.main.bounds.width
     public init() {
     }
 }
@@ -84,7 +86,7 @@ struct ExpandableCardView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    TopView(isSelected: self.$isSelected, selectedCard: selectedCard, deselectedCard: deselectedCard, card: self.card)
+                    TopView(isSelected: self.$isSelected, selectedCard: selectedCard, deselectedCard: deselectedCard, maxWidth: maxWidth, card: self.card)
                         .environmentObject(self.control)
                         .frame(height: self.normalCardHeight)
                     
@@ -128,6 +130,11 @@ struct ExpandableCardView: View {
         //MARK: Appearance of other Cards when the selected Card opens
         .opacity(control.anyTicketTriggered && !isSelected ? 0 : 1)
         .blur(radius: control.anyTicketTriggered && !isSelected ? 20 : 0)
+        .onRotate { _ in
+            let screen = UIScreen.main.bounds
+            self.control.isSelectedHeight = screen.height
+            self.control.isSelectedWidth = screen.width
+        }
     }
 
 }
@@ -139,6 +146,7 @@ struct TopView: View {
     @Binding var isSelected: Bool
     var selectedCard: () -> Void
     var deselectedCard: () -> Void
+    var maxWidth: CGFloat
     
     var card: Card
     
@@ -146,57 +154,60 @@ struct TopView: View {
         GeometryReader { geometry in
             ZStack {
                 ZStack {
-                    switch self.card.image {
-                    case .systemImage(let string):
-                        Image(systemName: string)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                        if !isSelected {
-                            VStack {
-                                Spacer()
-                                
-                                SystemMaterialView(style: .regular)
-                                    .frame(height: 45)
+                    VStack {
+                        switch self.card.image {
+                        case .systemImage(let string):
+                            Image(systemName: string)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                            if !isSelected {
+                                VStack {
+                                    Spacer()
+                                    
+                                    SystemMaterialView(style: .regular)
+                                        .frame(height: 45)
+                                }
                             }
+                        case .assetImage(let string):
+                            Image(string)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                            if !isSelected {
+                                VStack {
+                                    Spacer()
+                                    
+                                    SystemMaterialView(style: .regular)
+                                        .frame(height: 45)
+                                }
+                            }
+                        case .remoteImage(let named):
+                            if #available(iOS 15, *) {
+                                AsyncImage(url: named) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(height: 350, alignment: .bottom)
+                                } placeholder: {
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                                }
+                            } else {
+                                URLImage(named) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+                                }
+                            }
+                        case .defaultIcon:
+                            EmptyView()
                         }
-                    case .assetImage(let string):
-                        Image(string)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                        if !isSelected {
-                            VStack {
-                                Spacer()
-                                
-                                SystemMaterialView(style: .regular)
-                                    .frame(height: 45)
-                            }
-                        }
-                    case .remoteImage(let named):
-                        if #available(iOS 15, *) {
-                            AsyncImage(url: named) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height: 350, alignment: .bottom)
-                            } placeholder: {
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                            }
-                        } else {
-                            URLImage(named) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                            }
-                        }
-                    case .defaultIcon:
-                        EmptyView()
                     }
+                    .frame(maxWidth: (maxWidth > control.isSelectedWidth) ? control.isSelectedWidth : nil)
                 }
                 VStack(alignment: .center, spacing: 0) {
                     if self.isSelected {
