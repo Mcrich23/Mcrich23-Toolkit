@@ -48,7 +48,6 @@ struct ExpandableCardView: View {
                     self.isDetectingLongPress = false
                     Mcrich23_Toolkit.getTopVC { vc in
                         vc.nearestNavigationController?.setNavigationBarHidden(true, animated: false)
-                        print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
                     }
                 }
             }
@@ -247,7 +246,6 @@ struct TopView: View {
                                 withAnimation(Animation.timingCurve(0.7, -0.35, 0.2, 0.9, duration: 0.45)) {
                                     Mcrich23_Toolkit.getTopVC { vc in
                                         vc.nearestNavigationController?.setNavigationBarHidden(false, animated: true)
-                                        print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
                                     }
                                     self.isSelected = false
                                     deselectedCard()
@@ -289,7 +287,6 @@ struct TopView: View {
                             withAnimation(Animation.timingCurve(0.7, -0.35, 0.2, 0.9, duration: 0.45)) {
                                 Mcrich23_Toolkit.getTopVC { vc in
                                     vc.nearestNavigationController?.setNavigationBarHidden(false, animated: true)
-                                    print("navBarHidden = \(String(describing: vc.nearestNavigationController?.isNavigationBarHidden))")
                                 }
                                 self.isSelected = false
                                 deselectedCard()
