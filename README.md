@@ -20,23 +20,23 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 5. Check **Mcrich23-Toolkit**
 6. Click **Add To Project**
 
-## **SwiftUI Functions**
+# **SwiftUI Functions**
 
-### **CapsuleMultiFilter**
+## **CapsuleMultiFilter**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View
 
-#### **Description:**
+### **Description:**
 
 A nice multiple filter UI
 
-#### **Image:**
+### **Image:**
 
 <img width="277" alt="CapsuleMultiFilter Image" src="https://user-images.githubusercontent.com/81453549/160721810-0c5ca120-6440-443f-ad10-5e125b21c082.png">
 
-#### **Example:**
+### **Example:**
 ```
 CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus button menu. Must use .constant() so that the view updates.
         VStack {
@@ -54,23 +54,23 @@ CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus b
     selected: $viewModel.filter //An array of currently selected filters
 )
 ```
-### **OnboardingScreen**
+## **OnboardingScreen**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View
 
-#### **Description:**
+### **Description:**
 
 A screen for welcoming the user or presenting a What's New screen.
 
-#### **Image:**
+### **Image:**
 
 <img width="250" alt="OnboardingScreen Image (Individual)" src="https://user-images.githubusercontent.com/81453549/168524767-e457aa7b-93bc-4691-84e8-252f112a9227.png"> <img width="250" alt="OnboardingScreen Image (Steps)" src="https://user-images.githubusercontent.com/81453549/168524505-7c5b110d-521f-4ba9-9e62-4bb922c9d5ef.png">
 
-#### **Example:**
+### **Example:**
 
-##### **Individual:**
+#### **Individual:**
 ```
 OnboardingScreen(
     titleIcon: .systemImage(named: "plus"), // An icon to go next to the title
@@ -87,7 +87,7 @@ OnboardingScreen(
     ])
 )
 ```
-##### **Steps:**
+#### **Steps:**
  ```
  let steps = [ Text(NSLocalizedString("welcome title 1", comment: "")).font(.body),
                Text(NSLocalizedString("welcome title 2", comment: "")).font(.body),
@@ -119,19 +119,19 @@ OnboardingScreen<Content>(
 )
  ```
 See [badrinathvm/StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
-### **SwiftUIAlert**
+## **SwiftUIAlert**
 
-#### **Type:**
+### **Type:**
 
 Alert
 
-#### **Description:**
+### **Description:**
 
 Default alerts for SwiftUI
 
-#### **Examples:**
+### **Examples:**
 
-##### **show**
+#### **show**
 ```
 SwiftUIAlert.show(title: "Hello Word!", //Alert Title
                     message: "Lorem Ipsum", //Alert Message
@@ -142,7 +142,7 @@ SwiftUIAlert.show(title: "Hello Word!", //Alert Title
                     ]
 )
 ```
-##### **textfieldShow**
+#### **textfieldShow**
 ```
 SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
                             message: "Hello World!", //Alert Message
@@ -161,19 +161,19 @@ SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
 )
 ```
 
-### **contextMenu**
+## **contextMenu**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View Modifier
 
-#### **Description:**
+### **Description:**
 
 Uses UIKit elements to broaden the capabilities of context menus.
 
-#### **Example**
+### **Example**
 
-Expand
+#### **Expand**
 
  ```
  PreviewContextMenu(
@@ -193,7 +193,7 @@ Expand
     )
 ```
 
-Custom
+#### **Custom**
 
 ```
 .contextMenu(PreviewContextMenu(
@@ -216,22 +216,22 @@ Custom
 )
 ```
 
-### **CardView**
+## **CardView**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View
 
-#### **Description:**
+### **Description:**
 
 Similar to the cards in the App Store.
 
-#### **Image:**
+### **Image:**
 
 <img height="277" alt="CardView" src="https://user-images.githubusercontent.com/81453549/160887712-a05ae6b2-4915-448f-bca8-a6aba111a2fe.png"><img height="277" alt="OpenCard" src="https://user-images.githubusercontent.com/81453549/160888175-f886d89a-cd37-4b79-8c06-30c4b273a8d3.png">
 
 
-#### **Example:**
+### **Example:**
 ```
 CardView(
     showHeader: .yes( // Wheather header should be visible
@@ -254,21 +254,21 @@ CardView(
     }
 )
 ```
-### **ShareSheet**
+## **ShareSheet**
 
-#### **Type:**
+### **Type:**
 
 ShareSheet
 
-#### **Description:**
+### **Description:**
 
 System ShareSheet for SwiftUI.
 
-#### **Image:**
+### **Image:**
 
 <img height="277" alt="ShareSheet" src="https://user-images.githubusercontent.com/81453549/160920026-0230cadb-9a1f-4d44-8567-ba70454320c7.png">
 
-#### **Example:**
+### **Example:**
 
 ```
 Mcrich23_Toolkit.presentShareSheet(
@@ -276,17 +276,17 @@ Mcrich23_Toolkit.presentShareSheet(
     excludedActivityTypes: [] // Applications to exclude from share sheet
 )
 ```
-### **onRotate**
+## **onRotate**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View Modifier
 
-#### **Description:**
+### **Description:**
 
 Run code whenever the device rotates.
 
-#### **Example:**
+### **Example:**
 
 ```
 @State var orientation = UIDevice.current.orientation
@@ -302,17 +302,17 @@ var body: some view {
 }
 ```
 
-### **getTopVC**
+## **getTopVC**
 
-#### **Type:**
+### **Type:**
 
 Function
 
-#### **Description:**
+### **Description:**
 
 Get the top view controller to do a uikit function on the current view instead of the root view
 
-#### **Example:**
+### **Example:**
 
 ```
 Mcrich23-Toolkit.getTopVC { vc in
@@ -320,17 +320,17 @@ Mcrich23-Toolkit.getTopVC { vc in
 }
 ```
 
-### **topVC**
+## **topVC**
 
-#### **Type:**
+### **Type:**
 
 UIViewController
 
-#### **Description:**
+### **Description:**
 
 Get the top view controller to do a uikit function on the current view instead of the root view
 
-#### **Example:**
+### **Example:**
 
 ```
 Mcrich23_Toolkit.topVC.present {
@@ -338,16 +338,16 @@ Mcrich23_Toolkit.topVC.present {
 }
 ```
 
-### **onWillDissapear**
+## **onWillDissapear**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI View Modifier
 
-#### **Description:**
+### **Description:**
 Run code when the view will dissapear, but before it actually dissapears.
 
-#### **Example:**
+### **Example:**
 
 ```
 var body: some View {
@@ -358,17 +358,17 @@ var body: some View {
 }
 ```
 
-### **ConvertedGlyphImage**
+## **ConvertedGlyphImage**
 
-#### **Type:**
+### **Type:**
 
 SwiftUI Image
 
-#### **Description:**
+### **Description:**
 
 Converts GlyphImage into a SwiftUI Image
 
-#### **Example:**
+### **Example:**
 
  ```
  ConvertedGlyphImage(GlyphImage: $GlyphImage, defaultIcon: Image(systemName: "apps.iphone") { image in
@@ -379,35 +379,35 @@ Converts GlyphImage into a SwiftUI Image
  }
  ```
 
-### **openUrl**
+## **openUrl**
 
-#### **Type:**
+### **Type:**
 
 Function
 
-#### **Description**
+### **Description**
 
 Opens a url
 
-#### **Example**
+### **Example**
 
 ```
 Mcrich23_Toolkit.openUrl(url: url)
 ```
 
-## **UIKit Functions**
+# **UIKit Functions**
 
-### **InteracteractiveLinkLabel**
+## **InteracteractiveLinkLabel**
 
-#### **Type:**
+### **Type:**
 
 UILabel
 
-#### **Description**
+### **Description**
 
 Easily hyperlink your UILabel with this component of the Mcrich23-Toolkit
 
-### **Example:**
+## **Example:**
 
 ```
 let label: InteractiveLinkLabel = {
@@ -435,17 +435,17 @@ let label: InteractiveLinkLabel = {
 }()
 ```
 
-### **InteracteractiveLinkTextView**
+## **InteracteractiveLinkTextView**
 
-#### **Type:**
+### **Type:**
 
 UITextView
 
-#### **Description**
+### **Description**
 
 Easily hyperlink your UITextView with this component of the Mcrich23-Toolkit
 
-### **Example:**
+## **Example:**
 
 ```
 let textView: InteractiveLinkLabel = {
@@ -473,21 +473,21 @@ let textView: InteractiveLinkLabel = {
     return label
 }()
 ```
-## **Other**
+# **Other**
 
-### **GlyphImage**
+## **GlyphImage**
 
-#### **Type:**
+### **Type:**
 
 Enum
 
-#### **Description:**
+### **Description:**
 Different types of glyphs, whether it be icons, or images. one variable for all the types.
 
 
 Convert it to an image with `ConvertedGlyphImage`
  
- #### **Cases**
+ ### **Cases**
  
  ```
  GlyphImage.systemImage(named: "x.circle") // Uses SF Symbols
@@ -496,19 +496,19 @@ Convert it to an image with `ConvertedGlyphImage`
  GlyphImage.defaultIcon // The default icon that you specify
 ```
 
-### **NetworkMonitor**
+## **NetworkMonitor**
 
-#### **Type:**
+### **Type:**
 
 Class
 
-#### **Description:**
+### **Description:**
 
 Watch connection to the internet and use information to modify app behavior.
 
 **Note: You must call startMonitoring in order for NetworkMonitor to start working.**
 
-#### **Usage:**
+### **Usage:**
 
 Start Monitoring: `NetworkMonitor.shared.startMonitoring()` (Call in AppDelagate)
 
