@@ -29,13 +29,13 @@ import URLImage
  */
 public struct FeatureCell: View, Hashable {
     
-    public var image: glyphImage
+    public var image: GlyphImage
     public var title: String
     public var subtitle: String
     public var imageColor: Color
     public var id: String
     
-    public init(image: glyphImage, imageColor: Color, title: String, subtitle: String) {
+    public init(image: GlyphImage, imageColor: Color, title: String, subtitle: String) {
         self.image = image
         self.title = title
         self.subtitle = subtitle
@@ -43,7 +43,7 @@ public struct FeatureCell: View, Hashable {
         self.id = String(describing: Int.random(in: 0...99999999))
     }
     
-    public init(id: String, image: glyphImage, imageColor: Color, title: String, subtitle: String) {
+    public init(id: String, image: GlyphImage, imageColor: Color, title: String, subtitle: String) {
         self.image = image
         self.title = title
         self.subtitle = subtitle

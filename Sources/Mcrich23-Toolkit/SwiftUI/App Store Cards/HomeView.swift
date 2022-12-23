@@ -187,10 +187,10 @@ public struct Card : Identifiable, Equatable {
     public var summaryColor: Color
     public var enableSummaryInCard: Bool
     public var description: String
-    public var image: glyphImage
+    public var image: GlyphImage
     public var featureCells: [FeatureCell]
     
-    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: glyphImage) {
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, description: String, image: GlyphImage) {
         self.title = title
         self.subtitle = subtitle
         self.subtitleLocation = subtitleLocation
@@ -202,7 +202,7 @@ public struct Card : Identifiable, Equatable {
         self.image = image
         self.featureCells = []
     }
-    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, image: glyphImage, featureCells: [FeatureCell]) {
+    public init(title: String, subtitle: String, subtitleLocation: SubtitleLocation, titleColor: Color, briefSummary: String, summaryColor: Color, enableSummaryInCard: Bool, image: GlyphImage, featureCells: [FeatureCell]) {
         self.title = title
         self.subtitle = subtitle
         self.subtitleLocation = subtitleLocation

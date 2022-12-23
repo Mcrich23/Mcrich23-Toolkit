@@ -16,7 +16,7 @@ import URLImage
 /**
  Different types of glyphs, whether it be icons, or images. one variable for all the types. Convert it to an image with `ConvertedGlyphImage`
  */
-public enum glyphImage: Hashable, Equatable {
+public enum GlyphImage: Hashable, Equatable {
     /// SF Symbol
     case systemImage(named: String)
     /// Image From Assets
@@ -27,16 +27,16 @@ public enum glyphImage: Hashable, Equatable {
 }
 
 /**
- Converts glyphImage to a SwiftUI Image
+ Converts GlyphImage to a SwiftUI Image
  
- - parameter glyphImage: The glyphImage
+ - parameter GlyphImage: The GlyphImage
  - parameter defaultIcon: The default icon for a view.
  - parameter modifiers: All of the modifiers for your image.
  - returns: Image
  
  # Example #
  ```
- ConvertedGlyphImage(glyphImage: $glyphImage, defaultIcon: Image(systemName: "apps.iphone") { image in
+ ConvertedGlyphImage(GlyphImage: $GlyphImage, defaultIcon: Image(systemName: "apps.iphone") { image in
      image
          .resizable()
          .aspectRatio(contentMode: .fit)
@@ -46,15 +46,15 @@ public enum glyphImage: Hashable, Equatable {
  
  */
 public struct ConvertedGlyphImage<Content: View, Modifier: View>: View {
-    @Binding public var glyphImage: glyphImage
+    @Binding public var glyphImage: GlyphImage
     @State public var defaultIcon: Content
     @State public var modifiers: (Image) -> Modifier
-    public init(glyphImage: Binding<glyphImage>, defaultIcon: Content, modifiers: @escaping (Image) -> Modifier) {
+    public init(glyphImage: Binding<GlyphImage>, defaultIcon: Content, modifiers: @escaping (Image) -> Modifier) {
         self._glyphImage = glyphImage
         self._defaultIcon = State(initialValue: defaultIcon)
         self._modifiers = State(initialValue: modifiers)
     }
-    public init(glyphImage: Binding<glyphImage>, defaultIcon: Content) {
+    public init(glyphImage: Binding<GlyphImage>, defaultIcon: Content) {
         self._glyphImage = glyphImage
         self._defaultIcon = State(initialValue: defaultIcon)
         self._modifiers = State(initialValue: {image in return image as! Modifier})

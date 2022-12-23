@@ -38,13 +38,13 @@ import StepperView
  */
 public struct OnboardingScreen<Content: View>: View {
     @Environment(\.presentationMode) var presentationMode
-    var titleIcon: glyphImage = .defaultIcon
+    var titleIcon: GlyphImage = .defaultIcon
     var titleIconColor: Color = .gray
     var title: String = ""
     var subtitle: String = ""
     var cells: cellType
     
-    public init(titleIcon: glyphImage, titleIconColor: Color, title: String, subtitle: String, cells: cellType) {
+    public init(titleIcon: GlyphImage, titleIconColor: Color, title: String, subtitle: String, cells: cellType) {
         self.titleIcon = titleIcon
         self.titleIconColor = titleIconColor
         self.title = title
