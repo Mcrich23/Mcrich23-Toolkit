@@ -24,6 +24,10 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 
 ### **CapsuleMultiFilter**
 
+#### **Type:**
+
+SwiftUI View
+
 #### **Description:**
 
 A nice multiple filter UI
