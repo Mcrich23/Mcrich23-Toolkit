@@ -407,7 +407,7 @@ UILabel
 
 Easily hyperlink your UILabel with this component of the Mcrich23-Toolkit
 
-## **Example:**
+### **Example:**
 
 ```
 let label: InteractiveLinkLabel = {
