@@ -18,9 +18,7 @@ import SwiftUI
  # Example #
  ```
  PreviewContextMenu(
-        navigate: .custom({ // Expands view
-            showView.toggle()
-        }),
+        navigate: .expand, // Expands view
         destination: ContentView2(), // View to preview
         menu: {
             let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu

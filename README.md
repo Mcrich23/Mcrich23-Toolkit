@@ -173,30 +173,31 @@ Uses UIKit elements to broaden the capabilities of context menus.
 
 #### **Example**
 
+Expand
+
+ ```
+ PreviewContextMenu(
+        navigate: .expand, // Expands view
+        destination: ContentView2(), // View to preview
+        menu: {
+            let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+                showView.toggle()
+            }
+            return UIMenu(
+                title: "", // Menu Title
+                children: [ // Menu Items
+                    openView
+                ]
+            )
+        }
+    )
 ```
-.contextMenu(PreviewContextMenu(
-       navigate: .custom({ // Dismisses view and lets you run custom function
-           showView.toggle()
-       }),
-       destination: ContentView2(), // View to preview
-       menu: {
-           let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
-               showView.toggle()
-           }
-           return UIMenu(
-               title: "", // Menu Title
-               children: [ // Menu Items
-                   openView
-               ]
-           )
-       }
-   )
-)
-```
+
+Custom
 
 ```
 .contextMenu(PreviewContextMenu(
-       navigate: .custom({ // Expands view
+       navigate: .custom({ // Dismisses view and lets you run custom function
            showView.toggle()
        }),
        destination: ContentView2(), // View to preview
