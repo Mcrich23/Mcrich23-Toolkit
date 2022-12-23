@@ -445,7 +445,7 @@ UITextView
 
 Easily hyperlink your UITextView with this component of the Mcrich23-Toolkit
 
-## **Example:**
+### **Example:**
 
 ```
 let textView: InteractiveLinkLabel = {
