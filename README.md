@@ -20,6 +20,61 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 5. Check **Mcrich23-Toolkit**
 6. Click **Add To Project**
 
+# **Table Of Contents**
+
+[Requirements](#requirements)
+
+[Installation](#installation)
+
+<details><summary><a href="#swiftui-functions">SwiftUI Functions</a></summary>
+
+- [CapsuleMultiFilter](#capsulemultifilter)
+
+- [OnboardingScreen](#onboardingscreen)
+
+- <details><summary><a href="#swiftuialert">SwiftUIAlert</a></summary>
+
+    - [show](#show)
+
+    - [textfieldShow](#textfieldshow)
+  </details>
+
+- [contextMenu](#contextmenu)
+
+- [CardView](#cardview)
+
+- [ShareSheet](#sharesheet)
+
+- [onRotate](#onrotate)
+
+- [getTopVC](#gettopvc)
+
+- [topVC](#topvc)
+
+- [onWillDissapear](#onwilldissapear)
+
+- [ConvertedGlyphImage](#convertedglyphimage)
+
+- [openUrl](#openurl)
+
+</details>
+
+<details><summary><a href="#uikit-functions">UIKit Functions</a></summary>
+
+- [InteracteractiveLinkLabel](#interacteractivelinklabel)
+
+- [InteracteractiveLinkTextView](#interacteractivelinktextview)
+
+</details>
+
+<details><summary><a href="#other">Other</a></summary>
+
+- [GlyphImage](#glyphimage)
+
+- [NetworkMonitor](#networkmonitor)
+
+</details>
+
 # **SwiftUI Functions**
 
 ## **CapsuleMultiFilter**
