@@ -11,6 +11,8 @@ import Network
 /**
  Monitoring the network connection
  - returns: connectionType
+ - warning: You must call startMonitoring in order for NetworkMonitor to start working.
+ 
  # Example #
  ```
  if NetworkMonitor.shared.connectionType != .unknown {

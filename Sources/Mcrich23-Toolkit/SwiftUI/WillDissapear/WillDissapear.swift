@@ -53,6 +53,22 @@ public struct WillDisappearModifier: ViewModifier {
 }
 
 extension View {
+    /**
+     Run code when the view will dissapear, but before it actually dissapears.
+     
+     - parameter perform: Run code here.
+     
+     # Example #
+     ```
+        var body: some View {
+            Text("This view has dissapeared     \(viewModel.dissapearCount)     times!")
+            .onWillDissapear {
+                viewModel.dissapearCount += 1
+            }
+        }
+     ```
+     
+     */
     public func onWillDisappear(_ perform: @escaping () -> Void) -> some View {
         self.modifier(WillDisappearModifier(callback: perform))
     }

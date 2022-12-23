@@ -26,6 +26,27 @@ public struct DeviceRotationViewModifier: ViewModifier {
 
 // A View wrapper to make the modifier easier to use
 extension View {
+    /**
+     Run code whenever the device rotates.
+     
+     - parameter action: Run this action on rotation.
+     
+     # Example #
+     ```
+     @State var orientation = UIDevice.current.orientation
+     var body: some view {
+         VStack {
+             if orientation == .portrait {
+                 Text("Hello World")
+             }
+         }
+         .onRotate { newOrientation in
+             orientation = newOrientation
+         }
+     }
+     ```
+     
+     */
     public func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
         self.modifier(DeviceRotationViewModifier(action: action))
     }

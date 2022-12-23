@@ -52,6 +52,10 @@ CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus b
 ```
 ### **OnboardingScreen**
 
+#### **Type:**
+
+SwiftUI View
+
 #### **Description:**
 
 A screen for welcoming the user or presenting a What's New screen.
@@ -113,6 +117,10 @@ OnboardingScreen<Content>(
 See [badrinathvm/StepperView](https://github.com/badrinathvm/StepperView) for more info on the Steps function.
 ### **SwiftUIAlert**
 
+#### **Type:**
+
+Alert
+
 #### **Description:**
 
 Default alerts for SwiftUI
@@ -148,21 +156,66 @@ SwiftUIAlert.textfieldShow(title: "Test", //Alert Title
                             actions: [UIAlertAction(title: "Done", style: .default)]
 )
 ```
-### **NetworkMonitor**
+
+### **contextMenu**
+
+#### **Type:**
+
+SwiftUI View Modifier
 
 #### **Description:**
 
-Watch connection to the internet and use information to modify app behavior.
+Uses UIKit elements to broaden the capabilities of context menus.
 
-#### **Usage:**
+#### **Example**
 
-Start Monitoring: `NetworkMonitor.shared.startMonitoring()` (Call in AppDelagate)
+```
+.contextMenu(PreviewContextMenu(
+       navigate: .custom({ // Dismisses view and lets you run custom function
+           showView.toggle()
+       }),
+       destination: ContentView2(), // View to preview
+       menu: {
+           let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+               showView.toggle()
+           }
+           return UIMenu(
+               title: "", // Menu Title
+               children: [ // Menu Items
+                   openView
+               ]
+           )
+       }
+   )
+)
+```
 
-Stop Monitoring: `NetworkMonitor.shared.stopMonitoring()`
-
-Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean disconnected)
+```
+.contextMenu(PreviewContextMenu(
+       navigate: .custom({ // Expands view
+           showView.toggle()
+       }),
+       destination: ContentView2(), // View to preview
+       menu: {
+           let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+               showView.toggle()
+           }
+           return UIMenu(
+               title: "", // Menu Title
+               children: [ // Menu Items
+                   openView
+               ]
+           )
+       }
+   )
+)
+```
 
 ### **CardView**
+
+#### **Type:**
+
+SwiftUI View
 
 #### **Description:**
 
@@ -198,6 +251,10 @@ CardView(
 ```
 ### **ShareSheet**
 
+#### **Type:**
+
+ShareSheet
+
 #### **Description:**
 
 System ShareSheet for SwiftUI.
@@ -214,17 +271,20 @@ Mcrich23_Toolkit.presentShareSheet(
     excludedActivityTypes: [] // Applications to exclude from share sheet
 )
 ```
-### **.onRotate**
+### **onRotate**
+
+#### **Type:**
+
+SwiftUI View Modifier
 
 #### **Description:**
 
-Update a variable and your view on rotate.
+Run code whenever the device rotates.
 
 #### **Example:**
 
 ```
 @State var orientation = UIDevice.current.orientation
-...
 var body: some view {
     VStack {
         if orientation == .portrait {
@@ -232,11 +292,16 @@ var body: some view {
         }
     }
     .onRotate { newOrientation in
-        orientation = newOrientation
+        orientation = newOrientation // Updates the orientation variable
     }
 }
 ```
+
 ### **getTopVC**
+
+#### **Type:**
+
+Function
 
 #### **Description:**
 
@@ -252,6 +317,10 @@ Mcrich23-Toolkit.getTopVC { vc in
 
 ### **topVC**
 
+#### **Type:**
+
+UIViewController
+
 #### **Description:**
 
 Get the top view controller to do a uikit function on the current view instead of the root view
@@ -263,9 +332,71 @@ Mcrich23_Toolkit.topVC.present {
     EmptyView()
 }
 ```
+
+### **onWillDissapear**
+
+#### **Type:**
+
+SwiftUI View Modifier
+
+#### **Description:**
+Run code when the view will dissapear, but before it actually dissapears.
+
+#### **Example:**
+
+```
+var body: some View {
+    Text("This view has dissapeared\(viewModel.dissapearCount)times!")
+    .onWillDissapear {
+        viewModel.dissapearCount += 1
+    }
+}
+```
+
+### **ConvertedGlyphImage**
+
+#### **Type:**
+
+SwiftUI Image
+
+#### **Description:**
+
+Converts GlyphImage into a SwiftUI Image
+
+#### **Example:**
+
+ ```
+ ConvertedGlyphImage(GlyphImage: $GlyphImage, defaultIcon: Image(systemName: "apps.iphone") { image in
+     image
+         .resizable()
+         .aspectRatio(contentMode: .fit)
+         .foregroundColor(.primary)
+ }
+ ```
+
+### **openUrl**
+
+#### **Type:**
+
+Function
+
+#### **Description**
+
+Opens a url
+
+#### **Example**
+
+```
+Mcrich23_Toolkit.openUrl(url: url)
+```
+
 ## **UIKit Functions**
 
 ### **InteracteractiveLinkLabel**
+
+#### **Type:**
+
+UILabel
 
 #### **Description**
 
@@ -301,6 +432,10 @@ let label: InteractiveLinkLabel = {
 
 ### **InteracteractiveLinkTextView**
 
+#### **Type:**
+
+UITextView
+
 #### **Description**
 
 Easily hyperlink your UITextView with this component of the Mcrich23-Toolkit
@@ -333,3 +468,45 @@ let textView: InteractiveLinkLabel = {
     return label
 }()
 ```
+## **Other**
+
+### **GlyphImage**
+
+#### **Type:**
+
+Enum
+
+#### **Description:**
+Different types of glyphs, whether it be icons, or images. one variable for all the types.
+
+
+Convert it to an image with `ConvertedGlyphImage`
+ 
+ #### **Cases**
+ 
+ ```
+ GlyphImage.systemImage(named: "x.circle") // Uses SF Symbols
+ GlyphImage.systemImage(named: "person1") // Uses Assets.xcassets
+ GlyphImage.remoteImage(url: self.url) // Fetches from url and displays image
+ GlyphImage.defaultIcon // The default icon that you specify
+```
+
+### **NetworkMonitor**
+
+#### **Type:**
+
+Class
+
+#### **Description:**
+
+Watch connection to the internet and use information to modify app behavior.
+
+**Note: You must call startMonitoring in order for NetworkMonitor to start working.**
+
+#### **Usage:**
+
+Start Monitoring: `NetworkMonitor.shared.startMonitoring()` (Call in AppDelagate)
+
+Stop Monitoring: `NetworkMonitor.shared.stopMonitoring()`
+
+Get Connection Type: `NetworkMonitor.shared.connectionType` (Unknown can mean disconnected)

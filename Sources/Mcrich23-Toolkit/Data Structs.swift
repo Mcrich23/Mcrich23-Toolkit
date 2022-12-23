@@ -14,7 +14,14 @@ import Cocoa
 import SwiftUI
 import URLImage
 /**
- Different types of glyphs, whether it be icons, or images. one variable for all the types. Convert it to an image with `ConvertedGlyphImage`
+ Different types of glyphs, whether it be icons, or images. one variable for all the types.
+ 
+ Convert it to an image with ```ConvertedGlyphImage```
+ 
+ - parameter systemImage: Uses SF Symbols.
+ - parameter assetImage: Uses Assets.xcassets.
+ - parameter remoteImage: Fetches from url and displays image.
+ - parameter defaultIcon: The default icon that you specify.
  */
 public enum GlyphImage: Hashable, Equatable {
     /// SF Symbol
@@ -27,7 +34,7 @@ public enum GlyphImage: Hashable, Equatable {
 }
 
 /**
- Converts GlyphImage to a SwiftUI Image
+ Converts GlyphImage into a SwiftUI Image
  
  - parameter GlyphImage: The GlyphImage
  - parameter defaultIcon: The default icon for a view.
@@ -88,6 +95,17 @@ public struct ConvertedGlyphImage<Content: View, Modifier: View>: View {
 Class for all the free floating functions
  */
 public class Mcrich23_Toolkit {
+    /**
+     Opens a url
+     
+     - parameter url: The url you would like to open.
+     
+     # Example #
+     ```
+     Mcrich23_Toolkit.openUrl(url: url)
+     ```
+     
+     */
     public static func openUrl(url: String) {
         guard let url = URL(string: url) else { return }
         #if os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst)

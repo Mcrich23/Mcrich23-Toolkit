@@ -8,6 +8,53 @@
 import Foundation
 import SwiftUI
 
+/**
+ The preview context menu to show.
+ 
+ - parameter navigate: The action to perform when preview view is clicked.
+ - parameter destination: The view to preview.
+ - parameter menu: The items in the menu.
+ 
+ # Example #
+ ```
+ PreviewContextMenu(
+        navigate: .custom({ // Expands view
+            showView.toggle()
+        }),
+        destination: ContentView2(), // View to preview
+        menu: {
+            let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+                showView.toggle()
+            }
+            return UIMenu(
+                title: "", // Menu Title
+                children: [ // Menu Items
+                    openView
+                ]
+            )
+        }
+    )
+ 
+ PreviewContextMenu(
+        navigate: .custom({ // Dismisses view and lets you run custom function
+            showView.toggle()
+        }),
+        destination: ContentView2(), // View to preview
+        menu: {
+            let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+                showView.toggle()
+            }
+            return UIMenu(
+                title: "", // Menu Title
+                children: [ // Menu Items
+                    openView
+                ]
+            )
+        }
+    )
+ ```
+ 
+ */
 public struct PreviewContextMenu<Content: View> {
     public let destination: Content
     public let actionProvider: UIContextMenuActionProvider?
@@ -20,6 +67,13 @@ public struct PreviewContextMenu<Content: View> {
     }
 }
 
+/**
+ Different ways to navigate to your preview
+ 
+ - parameter expand: Expands view to display it.
+ - parameter custom: Dismisses view and runs custom function.
+ 
+ */
 public enum PreviewContextMenuNavigate {
     case expand
     case custom(() -> Void)
@@ -81,6 +135,51 @@ struct PreviewContextView<Content: View>: UIViewRepresentable {
 
 // Add context menu modifier
 extension View {
+    /**
+     Uses UIKit elements to broaden the capabilities of context menus.
+     
+     - parameter menu: The preview context menu.
+     # Example #
+    ```
+     .contextMenu(PreviewContextMenu(
+            navigate: .custom({ // Dismisses view and lets you run custom function
+                showView.toggle()
+            }),
+            destination: ContentView2(), // View to preview
+            menu: {
+                let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+                    showView.toggle()
+                }
+                return UIMenu(
+                    title: "", // Menu Title
+                    children: [ // Menu Items
+                        openView
+                    ]
+                )
+            }
+        )
+     )
+     
+     .contextMenu(PreviewContextMenu(
+            navigate: .custom({ // Expands view
+                showView.toggle()
+            }),
+            destination: ContentView2(), // View to preview
+            menu: {
+                let openView = UIAction(title: "Open", image:       UIImage(systemName: "arrow.right")) { _ in // Item for menu
+                    showView.toggle()
+                }
+                return UIMenu(
+                    title: "", // Menu Title
+                    children: [ // Menu Items
+                        openView
+                    ]
+                )
+            }
+        )
+     )
+    ```
+     */
     public func contextMenu<Content: View>(_ menu: PreviewContextMenu<Content>) -> some View {
         self.modifier(PreviewContextViewModifier(menu: menu))
     }
