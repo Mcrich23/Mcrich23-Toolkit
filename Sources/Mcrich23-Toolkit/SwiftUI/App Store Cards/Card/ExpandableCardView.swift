@@ -323,6 +323,7 @@ struct ExpandableView: View {
                         .foregroundColor(Color(.label))
                         .padding()
             }
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
