@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import Kingfisher
 
 public class TicketCardView_Control: ObservableObject {
     @Published public var anyTicketTriggered = false
@@ -182,26 +182,13 @@ struct TopView: View {
                                 }
                             }
                         case .remoteImage(let named):
-                            if #available(iOS 15, *) {
-                                AsyncImage(url: named) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(height: 350, alignment: .bottom)
-                                } placeholder: {
+                            KFImage(named)
+                                .placeholder({
                                     Image(systemName: "photo")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                                }
-                            } else {
-                                URLImage(named) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                                }
-                            }
+                                })
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
                         case .defaultIcon:
                             EmptyView()
                         }

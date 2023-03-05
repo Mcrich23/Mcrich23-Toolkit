@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import URLImage
+import Kingfisher
 import StepperView
 
 
@@ -76,29 +76,14 @@ public struct OnboardingScreen<Content: View>: View {
                             .frame(width: 54)
                             .foregroundColor(titleIconColor)
                     case .remoteImage(let url):
-                        if #available(iOS 15, *) {
-                            AsyncImage(url: url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 54)
-                                    .foregroundColor(titleIconColor)
-                            } placeholder: {
+                        KFImage(url)
+                            .placeholder({
                                 Image(systemName: "photo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 54)
-                                    .foregroundColor(titleIconColor)
-                            }
-                        } else {
-                            URLImage(url) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 54)
-                                    .foregroundColor(titleIconColor)
-                            }
-                        }
+                            })
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 54)
+                            .foregroundColor(titleIconColor)
                     case .defaultIcon:
                         EmptyView()
                     }

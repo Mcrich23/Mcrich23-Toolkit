@@ -13,6 +13,7 @@ import Cocoa
 #endif
 import SwiftUI
 import URLImage
+import Kingfisher
 /**
  Different types of glyphs, whether it be icons, or images. one variable for all the types.
  

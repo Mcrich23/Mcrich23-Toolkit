@@ -22,6 +22,7 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(name: "SwiftUIX", url: "https://github.com/SwiftUIX/SwiftUIX", from: "0.1.1"),
         .package(name: "URLImage", url: "https://github.com/dmytro-anokhin/url-image", from: "3.1.0"),
+        .package(name: "Kingfisher", url: "https://github.com/onevcat/Kingfisher", from: "7.6.2"),
         .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.3"),
         .package(name: "LoaderUI", url: "https://github.com/Mcrich23/LoaderUI", branch: "master"),
         .package(name: "SwiftUIMap", url: "https://github.com/Mcrich23/SwiftUIMap", from: "1.1.0"),
@@ -34,7 +35,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "StepperView", "SwiftUIBackports", "DeviceKit"]
+            dependencies: ["SwiftUIX", "Kingfisher", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "StepperView", "SwiftUIBackports", "DeviceKit"]
             )
         ]
 )

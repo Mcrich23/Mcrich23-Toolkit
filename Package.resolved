@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "MultiModal",
-        "repositoryURL": "https://github.com/davdroman/MultiModal",
-        "state": {
-          "branch": null,
-          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
-          "version": "2.1.0"
-        }
-      },
-      {
         "package": "StepperView",
         "repositoryURL": "https://github.com/badrinathvm/StepperView",
         "state": {
@@ -80,15 +71,6 @@
           "branch": null,
           "revision": "4042f955f1fdff00ced85545e1eecdbf969b5cd0",
           "version": "3.1.1"
-        }
-      },
-      {
-        "package": "WKView",
-        "repositoryURL": "https://github.com/rebeloper/WKView",
-        "state": {
-          "branch": "main",
-          "revision": "16e1390b4ed59a82609462d85cd0670d5144f036",
-          "version": null
         }
       }
     ]
