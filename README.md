@@ -28,7 +28,8 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 
 <details><summary><a href="#swiftui-functions">SwiftUI Functions</a></summary>
 
-- [CapsuleMultiFilter](#capsulemultifilter)
+- [ScrollCapsuleMultiFilter](#scrollcapsulemultifilter)
+- [AdaptiveCapsuleMultiFilter](#adaptivecapsulemultifilter)
 
 - [OnboardingScreen](#onboardingscreen)
 
@@ -77,7 +78,7 @@ The preferred way of installing Mcrich23 Toolkit is via the [Swift Package Manag
 
 # **SwiftUI Functions**
 
-## **CapsuleMultiFilter**
+## **ScrollCapsuleMultiFilter**
 
 ### **Type:**
 
@@ -85,7 +86,7 @@ SwiftUI View
 
 ### **Description:**
 
-A nice multiple filter UI
+A nice multiple filter UI that horizontally scrolls
 
 ### **Image:**
 
@@ -93,7 +94,7 @@ A nice multiple filter UI
 
 ### **Example:**
 ```
-CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus button menu. Must use .constant() so that the view updates.
+ ScrollCapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus button menu. Must use .constant() so that the view updates.
         VStack {
             ForEach(viewModel.filterOpt, id: \.self) { text in
                 if !viewModel.filter.contains(text) {
@@ -108,6 +109,37 @@ CapsuleMultiFilter(menuContent: .constant({ // Passes in the view for the plus b
     opt: $viewModel.filterOpt, //Use an array that are the same options as in the menu
     selected: $viewModel.filter //An array of currently selected filters
 )
+```
+## **AdaptiveCapsuleMultiFilter**
+
+### **Type:**
+
+SwiftUI View
+
+### **Description:**
+
+A nice multiple filter UI that auto resizes
+
+### **Image:**
+
+<img width="277" alt="CapsuleMultiFilter Image" src="https://user-images.githubusercontent.com/81453549/160721810-0c5ca120-6440-443f-ad10-5e125b21c082.png">
+
+### **Example:**
+```
+AdaptiveCapsuleMultiFilter(
+    "Filter: ", // The label you want next to the capsule filters
+    menuContent: .constant({ // Passes in the view for the plus button menu. Must use .constant() so that the view updates.
+        VStack {
+            ForEach(viewModel.filterOpt, id: \.self) { text in
+                if !viewModel.filter.contains(text) {
+                    Button {
+                        viewModel.filter.append(text)
+                    } label: {
+                        Text(text)
+                    }
+                }
+            }
+        }}), opt: $viewModel.filterOpt, // Use an array that are the same options as in the menu selected:$viewModel.filter) // An array of currently selected filters
 ```
 ## **OnboardingScreen**
 

@@ -79,6 +79,7 @@ public struct OnboardingScreen<Content: View>: View {
                         KFImage(url)
                             .placeholder({
                                 Image(systemName: "photo")
+                                    .resizable()
                             })
                             .resizable()
                             .aspectRatio(contentMode: .fit)

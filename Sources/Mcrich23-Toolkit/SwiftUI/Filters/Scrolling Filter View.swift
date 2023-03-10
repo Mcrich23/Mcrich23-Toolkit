@@ -11,7 +11,7 @@ import SwiftUI
 import SwiftUIX
 
 /**
- A nice multiple filter UI
+ A nice multiple filter UI that horizontally scrolls
  
  - parameter menuContent: Passes in the view for the plus button menu. Must use .constant() so that the view updates.
  - parameter opt: Use an array that are the same options as in the menu
@@ -19,7 +19,7 @@ import SwiftUIX
  
  # Example #
  ```
- CapsuleMultiFilter(menuContent: .constant({
+ ScrollCapsuleMultiFilter(menuContent: .constant({
          VStack {
              ForEach(viewModel.filterOpt, id: \.self) { text in
                  if !viewModel.filter.contains(text) {
@@ -35,7 +35,7 @@ import SwiftUIX
  
  */
 
-public struct CapsuleMultiFilter<Content: View>: View {
+public struct ScrollCapsuleMultiFilter<Content: View>: View {
     @Binding var menuContent: () -> Content
     @Binding var opt: [String]
     @Binding var selected: [String]
@@ -50,7 +50,9 @@ public struct CapsuleMultiFilter<Content: View>: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(selected, id: \.self) { selectedItem in
-                    stringFilterView(name: selectedItem) { item in
+                    stringFilterView(name: Binding(get: {
+                        return selectedItem
+                    }, set: {_ in})) { item in
                         let remove = selected.firstIndex(of: item)!
                         selected.remove(at: remove)
                     }
@@ -67,28 +69,6 @@ public struct CapsuleMultiFilter<Content: View>: View {
         .frame(height: 20, alignment: .trailing)
         .onAppear {
             print("opt = \(opt)")
-        }
-    }
-}
-
-struct stringFilterView: View {
-    @State var name: String
-    @State var remove: (_ String: String) -> Void
-    var body: some View {
-        HStack {
-            Button(action: {
-                remove(name)
-            }) {
-                Image(systemName: "x.circle")
-                Text(name)
-            }
-            .foregroundColor(.white)
-            .padding(.trailing)
-            .hoverEffect(.highlight)
-        }
-        .background {
-            Capsule(style: .circular)
-                .foregroundColor(.gray)
         }
     }
 }

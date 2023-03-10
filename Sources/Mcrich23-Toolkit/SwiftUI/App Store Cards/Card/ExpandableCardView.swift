@@ -185,6 +185,7 @@ struct TopView: View {
                             KFImage(named)
                                 .placeholder({
                                     Image(systemName: "photo")
+                                        .resizable()
                                 })
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)

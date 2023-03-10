@@ -70,6 +70,7 @@ public struct FeatureCell: View, Hashable {
                 KFImage(named)
                     .placeholder({
                         Image(systemName: "photo")
+                            .resizable()
                     })
                     .resizable()
                     .aspectRatio(contentMode: .fit)
