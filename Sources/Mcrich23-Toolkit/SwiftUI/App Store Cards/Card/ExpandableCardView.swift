@@ -208,18 +208,18 @@ struct TopView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             if self.card.subtitleLocation == .above {
-                                Text(self.card.subtitle)
+                                Text(LocalizedStringKey(self.card.subtitle))
                                     .font(.caption)
                                     .foregroundColor(self.card.titleColor)
                                     .lineLimit(1)
                             }
-                            Text(self.card.title)
+                            Text(LocalizedStringKey(self.card.title))
                                 .font(.headline)
                                 .foregroundColor(self.card.titleColor)
                                 .lineLimit(2)
                             
                             if self.card.subtitleLocation == .below {
-                                Text(self.card.subtitle)
+                                Text(LocalizedStringKey(self.card.subtitle))
                                     .font(.caption)
                                     .foregroundColor(self.card.titleColor)
                                     .lineLimit(1)
@@ -257,7 +257,7 @@ struct TopView: View {
                     //MARK: Bottom part
                     if !isSelected || self.card.enableSummaryInCard {
                         HStack(alignment: .center) {
-                            Text(self.card.briefSummary)
+                            Text(LocalizedStringKey(self.card.briefSummary))
                                 .foregroundColor(self.card.summaryColor)
                                 .font(.caption)
                                 .lineLimit(3)
@@ -306,7 +306,7 @@ struct ExpandableView: View {
                 .padding(.horizontal, 50)
             } else { // Using standard description
                 VStack(alignment: .leading) {
-                    Text(self.card.description)
+                    Text(LocalizedStringKey(self.card.description))
                         .font(.body)
                         .foregroundColor(Color(.label))
                         .padding()

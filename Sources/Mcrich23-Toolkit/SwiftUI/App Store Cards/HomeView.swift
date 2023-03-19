@@ -135,7 +135,7 @@ struct ScrollViewTitleView: View {
         VStack(alignment: .leading) {
             
             if headerSubtitleLocation == .above {
-                Text(headerSubtitile)
+                Text(LocalizedStringKey(headerSubtitile))
                     .font(.caption)
                     .fontWeight(.semibold)
                     .padding(.bottom, -5)
@@ -143,7 +143,7 @@ struct ScrollViewTitleView: View {
             }
             
             HStack(alignment: .center) {
-                Text(headerTitle)
+                Text(LocalizedStringKey(headerTitle))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color(.label))
@@ -160,7 +160,7 @@ struct ScrollViewTitleView: View {
                 
             }
             if headerSubtitleLocation == .below {
-                Text(headerSubtitile)
+                Text(LocalizedStringKey(headerSubtitile))
                     .font(.caption)
                     .fontWeight(.semibold)
                     .padding(.bottom)
