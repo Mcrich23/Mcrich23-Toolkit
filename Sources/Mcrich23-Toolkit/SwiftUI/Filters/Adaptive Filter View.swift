@@ -62,7 +62,8 @@ public struct AdaptiveCapsuleMultiFilter<Content: View>: View {
         } else {
             WrappingHStack(0..<(selected.count + 2), id: \.self) { index in
                 HStack {
-                    if index > 0 && index != (selected.count + 1), let selectedItem = selected[(index - 1)] {
+                    if index > 0 && index != (selected.count + 1) {
+                        let selectedItem = selected[(index - 1)]
                         stringFilterView(name: Binding(get: {
                             return selectedItem
                         }, set: {_ in})) { item in
