@@ -26,9 +26,10 @@ let package = Package(
         .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.3"),
         .package(name: "LoaderUI", url: "https://github.com/Mcrich23/LoaderUI", branch: "master"),
         .package(name: "SwiftUIMap", url: "https://github.com/Mcrich23/SwiftUIMap", from: "1.1.0"),
+        .package(name: "SwiftUIAlert", url: "https://github.com/Mcrich23/SwiftUIAlert", from: "1.0.0"),
         .package(name: "WrappingHStack", url: "https://github.com/dkk/WrappingHStack", from: "2.2.9"),
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
-        .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", from: "1.6.2"),
+        .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", revision: "1.7.0"),
         .package(name: "DeviceKit", url: "https://github.com/devicekit/DeviceKit", from: "4.7.0")
     ],
     targets: [
@@ -36,7 +37,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "Kingfisher", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "WrappingHStack", "StepperView", "SwiftUIBackports", "DeviceKit"]
+            dependencies: ["SwiftUIX", "Kingfisher", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "SwiftUIAlert", "WrappingHStack", "StepperView", "SwiftUIBackports", "DeviceKit"]
             )
         ]
 )
