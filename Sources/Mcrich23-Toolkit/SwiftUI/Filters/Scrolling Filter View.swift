@@ -61,7 +61,7 @@ public struct ScrollCapsuleMultiFilter<Content: View>: View {
                     Menu(content: {
                         menuContent()
                     }, label: {
-                        Image(systemName: "plus.circle")
+                        Image(systemSymbol: .plusCircle)
                     })
                 }
             }

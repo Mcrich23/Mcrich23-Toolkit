@@ -30,14 +30,15 @@ let package = Package(
         .package(name: "WrappingHStack", url: "https://github.com/dkk/WrappingHStack", from: "2.2.9"),
         .package(name: "StepperView", url: "https://github.com/badrinathvm/StepperView", branch: "master"),
         .package(name: "SwiftUIBackports", url: "https://github.com/shaps80/SwiftUIBackports", revision: "1.7.0"),
-        .package(name: "DeviceKit", url: "https://github.com/devicekit/DeviceKit", from: "4.7.0")
+        .package(name: "DeviceKit", url: "https://github.com/devicekit/DeviceKit", from: "4.7.0"),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "4.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Mcrich23-Toolkit",
-            dependencies: ["SwiftUIX", "Kingfisher", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "SwiftUIAlert", "WrappingHStack", "StepperView", "SwiftUIBackports", "DeviceKit"]
+            dependencies: ["SwiftUIX", "Kingfisher", "URLImage", "Introspect", "LoaderUI", "SwiftUIMap", "SwiftUIAlert", "WrappingHStack", "StepperView", "SwiftUIBackports", "DeviceKit", "SFSafeSymbols"]
             )
         ]
 )

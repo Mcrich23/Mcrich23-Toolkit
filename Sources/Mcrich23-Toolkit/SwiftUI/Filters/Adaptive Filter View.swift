@@ -56,7 +56,7 @@ public struct AdaptiveCapsuleMultiFilter<Content: View>: View {
                 Menu(content: {
                     menuContent()
                 }, label: {
-                    Image(systemName: "plus.circle")
+                    Image(systemSymbol: .plusCircle)
                 })
             }
         } else {
@@ -79,7 +79,7 @@ public struct AdaptiveCapsuleMultiFilter<Content: View>: View {
                             Menu(content: {
                                 menuContent()
                             }, label: {
-                                Image(systemName: "plus.circle")
+                                Image(systemSymbol: .plusCircle)
                             })
                         }
                     }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Kingfisher
+import SFSafeSymbols
 
 public class TicketCardView_Control: ObservableObject {
     @Published public var anyTicketTriggered = false
@@ -184,7 +185,7 @@ struct TopView: View {
                         case .remoteImage(let named):
                             KFImage(named)
                                 .placeholder({
-                                    Image(systemName: "photo")
+                                    Image(systemSymbol: .photo)
                                         .resizable()
                                 })
                                 .resizable()
@@ -238,7 +239,7 @@ struct TopView: View {
                                     self.isSelected = false
                                     deselectedCard()
                                     self.control.anyTicketTriggered = false }}) {
-                                        Image(systemName: "xmark.circle.fill")
+                                        Image(systemSymbol: .xmarkCircleFill)
                                             .foregroundColor(self.card.titleColor)
                                             .font(.system(size: 30, weight: .medium))
                                             .opacity(0.7)

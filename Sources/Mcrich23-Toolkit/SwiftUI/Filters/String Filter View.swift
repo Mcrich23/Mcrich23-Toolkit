@@ -18,7 +18,7 @@ struct stringFilterView: View {
             Button(action: {
                 remove(name)
             }) {
-                Image(systemName: "x.circle")
+                Image(systemSymbol: .xCircle)
                 Text(name)
             }
             .foregroundColor(.white)

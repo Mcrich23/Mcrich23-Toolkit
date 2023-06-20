@@ -14,6 +14,7 @@ import Cocoa
 import SwiftUI
 import URLImage
 import Kingfisher
+import SFSafeSymbols
 /**
  Different types of glyphs, whether it be icons, or images. one variable for all the types.
  
@@ -79,7 +80,7 @@ public struct ConvertedGlyphImage<Content: View, Modifier: View>: View {
                     AsyncImage(url: url) { image in
                         modifiers(image)
                     } placeholder: {
-                        modifiers(Image(systemName: "photo"))
+                        modifiers(Image(systemSymbol: .photo))
                     }
                 } else {
                     URLImage(url) { image in

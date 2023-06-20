@@ -78,7 +78,7 @@ public struct OnboardingScreen<Content: View>: View {
                     case .remoteImage(let url):
                         KFImage(url)
                             .placeholder({
-                                Image(systemName: "photo")
+                                Image(systemSymbol: .photo)
                                     .resizable()
                             })
                             .resizable()
